@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "59653321382",
+    "firebase_url": "https://freelo-upc.firebaseio.com",
+    "project_id": "freelo-upc",
+    "storage_bucket": "freelo-upc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59653321382:android:21bbf03ecd68c9c6",
+        "android_client_info": {
+          "package_name": "me.sadboyz.freelo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "59653321382-r6nar754takipif5shh7a19sm7udln1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_UfVWRMCvhAU8PuZqi7JnlSaS4CKdHyI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
