@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import me.sadboyz.freelo.R;
+import me.sadboyz.freelo.fragments.NotificationsFragment;
 import me.sadboyz.freelo.ui.FreeloTextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,24 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_search:
-                    mTextMessage.setText(R.string.title_activity_search);
-                    return true;
-                case R.id.navigation_rewards:
-                    mTextMessage.setText(R.string.title_activity_rewards);
-                    return true;
-                case R.id.navigation_new_work:
-                    mTextMessage.setText(R.string.title_activity_new_work);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_activity_notifications);
-                    return true;
-                case R.id.navigation_profile:
-                    mTextMessage.setText(R.string.title_activity_profile);
-                    return true;
-            }
-            return false;
+            return navigateAccordingTo(item.getItemId());
         }
 
     };
@@ -72,6 +57,41 @@ public class MainActivity extends AppCompatActivity {
         tv.setTypeface(tf);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(tv);
+    }
+
+    private Fragment getFragmentFor (int id)
+    {
+        switch (id)
+        {
+            case R.id.navigation_search:
+                //return new SearchFragment();
+            case R.id.navigation_rewards:
+                //return new RewardsFragment();
+            case R.id.navigation_new_work:
+                //return new NewWorkFragment();
+            case R.id.navigation_notifications:
+                return new NotificationsFragment();
+            case R.id.navigation_profile:
+                //return new ProfileFragment();
+        }
+        return null;
+    }
+
+    private boolean navigateAccordingTo(int id)
+    {
+        try
+        {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.content,getFragmentFor(id))
+                    .commit();
+            return true;
+        }
+        catch (NullPointerException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }
