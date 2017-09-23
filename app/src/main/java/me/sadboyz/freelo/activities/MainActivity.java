@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         this.setTitleView();
@@ -64,14 +63,18 @@ public class MainActivity extends AppCompatActivity {
         switch (id)
         {
             case R.id.navigation_search:
+                return null;
                 //return new SearchFragment();
             case R.id.navigation_rewards:
+                return null;
                 //return new RewardsFragment();
             case R.id.navigation_new_work:
+                return null;
                 //return new NewWorkFragment();
             case R.id.navigation_notifications:
                 return new NotificationsFragment();
             case R.id.navigation_profile:
+                return null;
                 //return new ProfileFragment();
         }
         return null;
