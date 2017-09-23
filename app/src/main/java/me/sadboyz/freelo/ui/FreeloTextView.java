@@ -36,5 +36,5 @@ public class FreeloTextView extends android.support.v7.widget.AppCompatTextView{
         Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Pacifico-Regular.ttf");
         setTypeface(font, Typeface.NORMAL);
     }
-    
+
 }
