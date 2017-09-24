@@ -1,5 +1,7 @@
 package me.sadboyz.freelo.models;
 
+import android.os.Bundle;
+
 /**
  * Created by Hugo on 23/09/2017.
  */
@@ -10,17 +12,20 @@ public class Reward {
     private String description;
     private Double price;
     private int quantity;
+    private int pictureID;
     private boolean status;
+
 
     public Reward() {
     }
 
-    public Reward(String idReward, String name, String description, Double price, int quantity, boolean status) {
+    public Reward(String idReward, String name, String description, Double price, int quantity, int pictureID, boolean status) {
         this.setIdReward(idReward);
         this.setName(name);
         this.setDescription(description);
         this.setPrice(price);
         this.setQuantity(quantity);
+        this.setPictureID(pictureID);
         this.setStatus(status);
     }
 
@@ -69,6 +74,15 @@ public class Reward {
         return this;
     }
 
+    public int getPictureID() {
+        return pictureID;
+    }
+
+    public Reward setPictureID(int pictureID) {
+        this.pictureID = pictureID;
+        return this;
+    }
+
     public boolean isStatus() {
         return status;
     }
@@ -76,5 +90,28 @@ public class Reward {
     public Reward setStatus(boolean status) {
         this.status = status;
         return this;
+    }
+
+
+    public Bundle toBundle(){
+        Bundle bundle = new Bundle();
+        bundle.putString("name", getName());
+        bundle.putString("description", getDescription());
+        bundle.putDouble("price", getPrice());
+        bundle.putInt("quantity", getQuantity());
+        bundle.putInt("pictureID", getPictureID());
+        return bundle;
+    }
+
+    public static Reward from(Bundle bundle)
+    {
+        Reward reward = new Reward();
+        reward.setName(bundle.getString("name"))
+                .setDescription(bundle.getString("description"))
+                .setPrice(bundle.getDouble("price"))
+                .setQuantity(bundle.getInt("quantity"))
+                .setPictureID(bundle.getInt("pivtureID"));
+
+        return reward;
     }
 }

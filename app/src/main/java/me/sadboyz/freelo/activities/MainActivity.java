@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import me.sadboyz.freelo.R;
 import me.sadboyz.freelo.fragments.NotificationsFragment;
+import me.sadboyz.freelo.fragments.RewardsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 return null;
                 //return new SearchFragment();
             case R.id.navigation_rewards:
-                return null;
-                //return new RewardsFragment();
+                return new RewardsFragment();
             case R.id.navigation_new_work:
                 return null;
                 //return new NewWorkFragment();

@@ -5,7 +5,7 @@
     tools:context=".fragments.RewardsFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/homeRecyclerView"
+        android:id="@+id/rewardsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
