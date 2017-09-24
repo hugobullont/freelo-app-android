@@ -13,4 +13,11 @@
     <string name="title_your_tab_freelos_fragment">Tus Freelos</string>
     <string name="title_foll_tab_freelos_fragment">Seguidos</string>
     <string name="title_pub_tab_freelos_fragment">Publicados</string>
+
+    <string name="sample_name">Sample Name</string>
+    <string name="sample_description">Sample Description</string>
+    <string name="sample_priece">Sample Priece</string>
+    <string name="sample_quantity">Sample Quantity</string>
+    <string name="button_text">More Info</string>
+    <string name="button_add">Add</string>
 </resources>
