@@ -49,10 +49,10 @@ public class RewardsFragment extends Fragment {
 
     public void inicializadorDatos(){
         //rewards = new ArrayList<>();
-        RewardsRepository.getInstance().AddRewardToDatabase("Hola","Dbieo",25.0,3,R.mipmap.ic_launcher,true);
+        /*RewardsRepository.getInstance().AddRewardToDatabase("Hola","Dbieo",25.0,3,R.mipmap.ic_launcher,true);
         RewardsRepository.getInstance().AddRewardToDatabase("Hola", "Bienvenido",35.0, 3, R.mipmap.ic_launcher,true);
         RewardsRepository.getInstance().AddRewardToDatabase("Hola", "Bienvenido",46.0, 3, R.mipmap.ic_launcher,true);
-        RewardsRepository.getInstance().AddRewardToDatabase("Hola", "Bienvenido",47.0, 3, R.mipmap.ic_launcher,false);
+        RewardsRepository.getInstance().AddRewardToDatabase("Hola", "Bienvenido",47.0, 3, R.mipmap.ic_launcher,false);*/
         rewards = RewardsRepository.getInstance().GetActiveRewards();
         /*rewards.add(new Reward("1","Hola","Dbieo",2.3,3,R.mipmap.ic_launcher,true));
         rewards.add(new Reward("2","Hola", "Bienvenido",2.3, 3, R.mipmap.ic_launcher,true));
