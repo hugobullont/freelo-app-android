@@ -17,7 +17,7 @@ import me.sadboyz.freelo.models.Reward;
 import static android.content.ContentValues.TAG;
 
 /**
- * Created by Usuario on 23/09/2017.
+ * Created by Hugo on 23/09/2017.
  */
 
 public class RewardsRepository {
@@ -52,11 +52,8 @@ public class RewardsRepository {
     public List<Reward> GetActiveRewards()
     {
 
-        List<Reward> original = new ArrayList<>();
-
-        original = rewards;
+        List<Reward> original = rewards;
         rewards = new ArrayList<>();
-
         for (Reward r: original) {
             if(r.isStatus()){
                 rewards.add(r);
