@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import me.sadboyz.freelo.R;
+import me.sadboyz.freelo.repositories.RewardsRepository;
 
 /**
  * A simple {@link Fragment} subclass.

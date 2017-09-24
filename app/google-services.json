@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "59653321382-6d82lc57prjhu98vhnfc0oqq1tboafmm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.sadboyz.freelo",
+            "certificate_hash": "b6f85b58acd09958fa2cc335de8c4e0292ae872f"
+          }
+        },
+        {
           "client_id": "59653321382-r6nar754takipif5shh7a19sm7udln1j.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "59653321382-r6nar754takipif5shh7a19sm7udln1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

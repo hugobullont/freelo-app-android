@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import me.sadboyz.freelo.R;
 import me.sadboyz.freelo.fragments.NotificationsFragment;
-import me.sadboyz.freelo.ui.FreeloTextView;
 
 public class MainActivity extends AppCompatActivity {
 
