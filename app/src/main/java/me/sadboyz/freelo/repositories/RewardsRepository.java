@@ -36,10 +36,10 @@ public class RewardsRepository {
         return instance;
     }
 
-    public RewardsRepository AddRewardToDatabase(String name, String description, Double price, int quantity, boolean status){
+    public RewardsRepository AddRewardToDatabase(String name, String description, Double price, int quantity, int pictureId, boolean status){
         String key = mDatabase.push().getKey();
-        Reward reward = new Reward(key,name,description,price,quantity,status);
-        mDatabase.child("rewards").child(key).setValue(reward);
+        Reward reward = new Reward(key,name,description,price,quantity,pictureId,status);
+        mDatabase.child("rewards").setValue(reward);
         return this;
     }
 
@@ -58,7 +58,6 @@ public class RewardsRepository {
                 GenericTypeIndicator<List<Reward>> genericTypeIndicator =new GenericTypeIndicator<List<Reward>>(){};
 
                 rewards = dataSnapshot.getValue(genericTypeIndicator);
-
             }
 
             @Override
