@@ -12,14 +12,14 @@ public class Reward {
     private String description;
     private Double price;
     private int quantity;
-    private int pictureID;
+    private String pictureID;
     private boolean status;
 
 
     public Reward() {
     }
 
-    public Reward(String idReward, String name, String description, Double price, int quantity, int pictureID, boolean status) {
+    public Reward(String idReward, String name, String description, Double price, int quantity, String pictureID, boolean status) {
         this.setIdReward(idReward);
         this.setName(name);
         this.setDescription(description);
@@ -74,11 +74,11 @@ public class Reward {
         return this;
     }
 
-    public int getPictureID() {
+    public String getPictureID() {
         return pictureID;
     }
 
-    public Reward setPictureID(int pictureID) {
+    public Reward setPictureID(String pictureID) {
         this.pictureID = pictureID;
         return this;
     }
@@ -99,7 +99,7 @@ public class Reward {
         bundle.putString("description", getDescription());
         bundle.putDouble("price", getPrice());
         bundle.putInt("quantity", getQuantity());
-        bundle.putInt("pictureID", getPictureID());
+        bundle.putString("pictureID", getPictureID());
         return bundle;
     }
 
@@ -110,7 +110,7 @@ public class Reward {
                 .setDescription(bundle.getString("description"))
                 .setPrice(bundle.getDouble("price"))
                 .setQuantity(bundle.getInt("quantity"))
-                .setPictureID(bundle.getInt("pivtureID"));
+                .setPictureID(bundle.getString("pictureID"));
 
         return reward;
     }

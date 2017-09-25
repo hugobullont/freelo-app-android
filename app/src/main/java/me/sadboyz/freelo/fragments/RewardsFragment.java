@@ -45,7 +45,7 @@ public class RewardsFragment extends Fragment {
         rewardsSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                RewardsRepository.getInstance().SetActiveRewards();
+                //RewardsRepository.getInstance().SetActiveRewards();
                 rewards = RewardsRepository.getInstance().getRewards();
                 rewardsAdapter.setRewards(rewards);
                 rewardsRecyclerView.setAdapter(rewardsAdapter);
@@ -56,7 +56,7 @@ public class RewardsFragment extends Fragment {
         rewardLayoutManager= new LinearLayoutManager(view.getContext());
         rewardsRecyclerView.setLayoutManager(rewardLayoutManager);
         rewards = RewardsRepository.getInstance().getRewards();
-        rewardsAdapter = new RewardsAdapter(rewards);
+        rewardsAdapter = new RewardsAdapter(rewards,this);
         rewardsRecyclerView.setAdapter(rewardsAdapter);
         return view;
     }

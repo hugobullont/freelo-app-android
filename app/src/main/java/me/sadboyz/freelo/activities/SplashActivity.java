@@ -30,6 +30,6 @@ public class SplashActivity extends AppCompatActivity {
     private void LoadData()
     {
         RewardsRepository.getInstance().EventLoad();
-        RewardsRepository.getInstance().SetActiveRewards();
+        //RewardsRepository.getInstance().SetActiveRewards();
     }
 }

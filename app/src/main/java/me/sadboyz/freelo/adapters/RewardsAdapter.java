@@ -1,5 +1,8 @@
 package me.sadboyz.freelo.adapters;
 
+import android.content.Context;
+import android.net.Uri;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,10 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.android.gms.tasks.OnSuccessListener;
+
 import java.util.List;
 
 import me.sadboyz.freelo.R;
 import me.sadboyz.freelo.models.Reward;
+import me.sadboyz.freelo.repositories.ImagesRepository;
 
 /**
  * Created by Leonel on 23/09/2017.
@@ -19,12 +27,14 @@ import me.sadboyz.freelo.models.Reward;
 public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHolder> {
 
     private List<Reward> rewards;
+    private Fragment fragment;
 
     public RewardsAdapter() {
     }
 
-    public RewardsAdapter(List<Reward> rewards) {
+    public RewardsAdapter(List<Reward> rewards, Fragment fragment) {
         this.setRewards(rewards);
+        this.setFragment(fragment);
     }
 
 
@@ -38,15 +48,27 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
 
         final Reward reward = getRewards().get(position);
         holder.nameTextView.setText(reward.getName());
        // holder.descriptionTextView.setText(reward.getDescription());
         holder.priceTextView.setText("S/ "+String.format("%.2f",reward.getPrice()));
        // holder.quantityTextView.setText(String.valueOf(reward.getQuantity()));
-        holder.pictureImageView.setImageResource(reward.getPictureID());
+        //holder.pictureImageView.setImageResource(reward.getPictureID());
 
+        ImagesRepository.getInstance().GetStorageReferenceFor(reward.getPictureID())
+                .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(fragment).load(uri.toString()).into(holder.pictureImageView);
+            }
+        });
+
+
+        /*Glide.with(fragment).using(new FirebaseImageLoader())
+                .load(ImagesRepository.getInstance().GetStorageReferenceFor(reward.getPictureID()))
+                .into(holder.pictureImageView);*/
     }
 
     @Override
@@ -61,6 +83,14 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHold
     public RewardsAdapter setRewards(List<Reward> rewards) {
         this.rewards = rewards;
         return this;
+    }
+
+    public Fragment getFragment() {
+        return fragment;
+    }
+
+    public void setFragment(Fragment fragment) {
+        this.fragment = fragment;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

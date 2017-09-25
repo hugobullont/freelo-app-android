@@ -42,14 +42,14 @@ public class RewardsRepository {
         return instance;
     }
 
-    public RewardsRepository AddRewardToDatabase(String name, String description, Double price, int quantity, int pictureId, boolean status){
+    public RewardsRepository AddRewardToDatabase(String name, String description, Double price, int quantity, String pictureId, boolean status){
         String key = mDatabase.child("rewards").push().getKey();
         Reward reward = new Reward(key,name,description,price,quantity,pictureId,status);
         mDatabase.child("rewards").child(key).setValue(reward);
         return this;
     }
 
-    public RewardsRepository SetActiveRewards()
+    /*public RewardsRepository SetActiveRewards()
     {
         List<Reward> original = rewards;
         rewards = new ArrayList<>();
@@ -59,7 +59,7 @@ public class RewardsRepository {
             }
         }
         return this;
-    }
+    }*/
 
     public void EventLoad()
     {
@@ -74,9 +74,10 @@ public class RewardsRepository {
 
                 Iterable<DataSnapshot> iterable = dataSnapshot.child("rewards").getChildren();
                 rewards = new ArrayList<>();
-                while(iterable.iterator().hasNext())
-                    rewards.add(iterable.iterator().next().getValue(Reward.class));
-
+                while(iterable.iterator().hasNext()) {
+                    Reward reward = iterable.iterator().next().getValue(Reward.class);
+                    if(reward.isStatus())rewards.add(reward);
+                }
 
             }
 
