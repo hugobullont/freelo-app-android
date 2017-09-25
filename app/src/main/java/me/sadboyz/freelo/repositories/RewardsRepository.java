@@ -49,9 +49,8 @@ public class RewardsRepository {
         return this;
     }
 
-    public List<Reward> GetActiveRewards()
+    public RewardsRepository SetActiveRewards()
     {
-
         List<Reward> original = rewards;
         rewards = new ArrayList<>();
         for (Reward r: original) {
@@ -59,13 +58,12 @@ public class RewardsRepository {
                 rewards.add(r);
             }
         }
-
-        return rewards;
+        return this;
     }
 
     public void EventLoad()
     {
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener(){
+        mDatabase.addValueEventListener(new ValueEventListener(){
             @Override
             public void onDataChange(DataSnapshot dataSnapshot){
                 // This method is called once with the initial value and again whenever data at this location is updated.
@@ -75,7 +73,7 @@ public class RewardsRepository {
                 //GenericTypeIndicator<List<Reward>> genericTypeIndicator =new GenericTypeIndicator<List<Reward>>(){};
 
                 Iterable<DataSnapshot> iterable = dataSnapshot.child("rewards").getChildren();
-
+                rewards = new ArrayList<>();
                 while(iterable.iterator().hasNext())
                     rewards.add(iterable.iterator().next().getValue(Reward.class));
 
@@ -88,6 +86,11 @@ public class RewardsRepository {
                 Log.w(TAG,"Failed to read value.",error.toException());
             }
         });
+    }
+
+    public List<Reward> getRewards()
+    {
+        return rewards;
     }
 
 }

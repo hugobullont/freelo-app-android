@@ -3,7 +3,10 @@ package me.sadboyz.freelo.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +28,7 @@ public class RewardsFragment extends Fragment {
     RewardsAdapter rewardsAdapter;
     RecyclerView.LayoutManager rewardLayoutManager;
     List<Reward> rewards;
+    SwipeRefreshLayout rewardsSwipeRefreshLayout;
 
     public RewardsFragment() {
         // Required empty public constructor
@@ -35,34 +39,29 @@ public class RewardsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_rewards, container, false);
+        View view = inflater.inflate(R.layout.fragment_rewards, container, false);
         rewardsRecyclerView = (RecyclerView)view.findViewById(R.id.rewardsRecyclerView);
+        rewardsSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.rewardsSwipeRefreshLayout);
+        rewardsSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                RewardsRepository.getInstance().SetActiveRewards();
+                rewards = RewardsRepository.getInstance().getRewards();
+                rewardsAdapter.setRewards(rewards);
+                rewardsRecyclerView.setAdapter(rewardsAdapter);
+                rewardsSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
-        rewardLayoutManager= new GridLayoutManager(view.getContext(),1);
-        rewardsRecyclerView.setAdapter(rewardsAdapter);
+        rewardLayoutManager= new LinearLayoutManager(view.getContext());
         rewardsRecyclerView.setLayoutManager(rewardLayoutManager);
-        inicializadorDatos();
-        inicializadorAdaptador();
+        rewards = RewardsRepository.getInstance().getRewards();
+        rewardsAdapter = new RewardsAdapter(rewards);
+        rewardsRecyclerView.setAdapter(rewardsAdapter);
         return view;
     }
 
 
-    public void inicializadorDatos(){
-        //rewards = new ArrayList<>();
-        /*RewardsRepository.getInstance().AddRewardToDatabase("Hola","Dbieo",25.0,3,R.mipmap.ic_launcher,true);
-        RewardsRepository.getInstance().AddRewardToDatabase("Hola", "Bienvenido",35.0, 3, R.mipmap.ic_launcher,true);
-        RewardsRepository.getInstance().AddRewardToDatabase("Hola", "Bienvenido",46.0, 3, R.mipmap.ic_launcher,true);
-        RewardsRepository.getInstance().AddRewardToDatabase("Hola", "Bienvenido",47.0, 3, R.mipmap.ic_launcher,false);*/
-        rewards = RewardsRepository.getInstance().GetActiveRewards();
-        /*rewards.add(new Reward("1","Hola","Dbieo",2.3,3,R.mipmap.ic_launcher,true));
-        rewards.add(new Reward("2","Hola", "Bienvenido",2.3, 3, R.mipmap.ic_launcher,true));
-        rewards.add(new Reward("3","Hola", "Bienvenido",4.6, 3, R.mipmap.ic_launcher,true));
-        rewards.add(new Reward("4","Hola", "Bienvenido",4.7, 3, R.mipmap.ic_launcher,false));*/
-    }
-    public RewardsAdapter adaptador;
-    private void inicializadorAdaptador() {
-        adaptador = new RewardsAdapter(rewards);
-        rewardsRecyclerView.setAdapter(adaptador);
-    }
+
 
 }

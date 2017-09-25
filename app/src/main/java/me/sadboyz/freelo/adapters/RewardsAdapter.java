@@ -44,7 +44,7 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHold
         holder.nameTextView.setText(reward.getName());
         holder.descriptionTextView.setText(reward.getDescription());
         holder.priceTextView.setText(String.valueOf(reward.getPrice()));
-        holder.quantityTextView.setText(reward.getQuantity());
+        holder.quantityTextView.setText(String.valueOf(reward.getQuantity()));
         holder.pictureImageView.setImageResource(reward.getPictureID());
 
     }
