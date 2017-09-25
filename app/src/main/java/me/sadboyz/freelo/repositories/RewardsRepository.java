@@ -42,7 +42,7 @@ public class RewardsRepository {
         return instance;
     }
 
-    public RewardsRepository AddRewardToDatabase(String name, String description, Double price, int quantity, int pictureId, boolean status){
+    public RewardsRepository AddRewardToDatabase(String name, String description, Double price, int quantity, String pictureId, boolean status){
         String key = mDatabase.child("rewards").push().getKey();
         Reward reward = new Reward(key,name,description,price,quantity,pictureId,status);
         mDatabase.child("rewards").child(key).setValue(reward);
