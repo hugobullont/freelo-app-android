@@ -15,15 +15,14 @@
 
         <ImageView
             android:id="@+id/pictureRImageView"
-            android:layout_width="370dp"
-            android:layout_height="230dp"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/perro_manejando"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteX="0dp"
-            android:layout_marginTop="0dp" />
+            tools:layout_editor_absoluteX="8dp" />
 
         <TextView
             android:id="@+id/nameRTextView"
@@ -32,9 +31,10 @@
             app:layout_constraintTop_toBottomOf="@+id/pictureRImageView"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/sample_name"
-            android:textStyle="bold|italic"
+            android:textStyle="bold"
             android:textSize="@dimen/text_margin"
-            android:layout_margin="@dimen/default_margin" />
+            android:layout_margin="@dimen/default_margin_base"
+            tools:layout_editor_absoluteX="24dp" />
 
         <TextView
             android:id="@+id/priceRTextView"
@@ -43,9 +43,9 @@
             android:text="@string/sample_priece"
             app:layout_constraintTop_toBottomOf="@+id/pictureRImageView"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textStyle="bold|italic"
-            android:textSize="@dimen/text_margin"
-            android:layout_margin="@dimen/default_margin" />
+            android:textSize="@dimen/text_title_margin"
+            android:layout_margin="@dimen/default_margin_base"
+            tools:layout_editor_absoluteX="236dp" />
 
         <Button
             android:id="@+id/buttonR"
@@ -56,10 +56,23 @@
             app:layout_constraintTop_toBottomOf="@+id/priceRTextView"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/colorTextWhite"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_margin="@dimen/default_margin_base"
+            tools:layout_editor_absoluteX="24dp" />
+
+        <!--<Button
+            android:id="@+id/buttonR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/priceRTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/colorTextWhite"
             android:textStyle="bold|normal"
             android:backgroundTint="@color/colorPrimary"
-            android:layout_margin="@dimen/default_margin"
-            android:drawableLeft="@drawable/ic_add_box_white_24dp" />
+            android:layout_margin="@dimen/default_margin_base"
+            android:drawableLeft="@drawable/ic_add_box_white_24dp" />-->
 
 
     </android.support.constraint.ConstraintLayout>

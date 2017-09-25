@@ -44,7 +44,7 @@
             android:text="@string/sample_priece"
             app:layout_constraintTop_toBottomOf="@id/nameRTextView"
             app:layout_constraintStart_toEndOf="@id/pictureRImageView"
-            android:textStyle="bold|italic"
+            android:textStyle="italic"
             android:textSize="@dimen/text_margin"
             android:layout_margin="@dimen/default_margin" />
 
@@ -58,10 +58,8 @@
             app:layout_constraintStart_toEndOf="@id/pictureRImageView"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/colorTextWhite"
-            android:textStyle="bold|normal"
             android:backgroundTint="@color/colorPrimary"
-            android:layout_margin="@dimen/default_margin"
-            android:drawableLeft="@drawable/ic_add_box_white_24dp" />
+            android:layout_margin="@dimen/default_margin" />
 
     </android.support.constraint.ConstraintLayout>
 

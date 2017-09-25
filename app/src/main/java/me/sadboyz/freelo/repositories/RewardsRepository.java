@@ -49,7 +49,7 @@ public class RewardsRepository {
         return this;
     }
 
-    public RewardsRepository SetActiveRewards()
+    /*public RewardsRepository SetActiveRewards()
     {
         List<Reward> original = rewards;
         rewards = new ArrayList<>();
@@ -59,7 +59,7 @@ public class RewardsRepository {
             }
         }
         return this;
-    }
+    }*/
 
     public void EventLoad()
     {
@@ -74,9 +74,10 @@ public class RewardsRepository {
 
                 Iterable<DataSnapshot> iterable = dataSnapshot.child("rewards").getChildren();
                 rewards = new ArrayList<>();
-                while(iterable.iterator().hasNext())
-                    rewards.add(iterable.iterator().next().getValue(Reward.class));
-
+                while(iterable.iterator().hasNext()) {
+                    Reward reward = iterable.iterator().next().getValue(Reward.class);
+                    if(reward.isStatus())rewards.add(reward);
+                }
 
             }
 
