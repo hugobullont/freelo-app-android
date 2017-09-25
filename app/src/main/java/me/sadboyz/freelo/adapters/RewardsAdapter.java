@@ -42,9 +42,9 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHold
 
         final Reward reward = getRewards().get(position);
         holder.nameTextView.setText(reward.getName());
-        holder.descriptionTextView.setText(reward.getDescription());
+       // holder.descriptionTextView.setText(reward.getDescription());
         holder.priceTextView.setText("S/ "+String.format("%.2f",reward.getPrice()));
-        holder.quantityTextView.setText(String.valueOf(reward.getQuantity()));
+       // holder.quantityTextView.setText(String.valueOf(reward.getQuantity()));
         holder.pictureImageView.setImageResource(reward.getPictureID());
 
     }
@@ -65,16 +65,16 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameTextView;
-        TextView descriptionTextView;
+        //TextView descriptionTextView;
         TextView priceTextView;
-        TextView quantityTextView;
+        //TextView quantityTextView;
         ImageView pictureImageView;
         public ViewHolder(View itemView) {
             super(itemView);
             nameTextView  =(TextView)itemView.findViewById(R.id.nameRTextView);
-            descriptionTextView = (TextView)itemView.findViewById(R.id.descriptionRTextView);
+            // descriptionTextView = (TextView)itemView.findViewById(R.id.descriptionRTextView);
             priceTextView = (TextView)itemView.findViewById(R.id.priceRTextView);
-            quantityTextView  =(TextView)itemView.findViewById(R.id.quantityRTextView);
+            // quantityTextView  =(TextView)itemView.findViewById(R.id.quantityRTextView);
             pictureImageView = (ImageView)itemView.findViewById(R.id.pictureRImageView);
         }
     }

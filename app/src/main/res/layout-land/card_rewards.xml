@@ -15,22 +15,23 @@
 
         <ImageView
             android:id="@+id/pictureRImageView"
-            android:layout_width="370dp"
-            android:layout_height="230dp"
+            android:layout_width="300dp"
+            android:layout_height="240dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/perro_manejando"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="0dp"
-            android:layout_marginTop="0dp" />
+            android:layout_marginBottom="0dp"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/nameRTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/pictureRImageView"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/pictureRImageView"
             android:text="@string/sample_name"
             android:textStyle="bold|italic"
             android:textSize="@dimen/text_margin"
@@ -41,8 +42,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sample_priece"
-            app:layout_constraintTop_toBottomOf="@+id/pictureRImageView"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameRTextView"
+            app:layout_constraintStart_toEndOf="@id/pictureRImageView"
             android:textStyle="bold|italic"
             android:textSize="@dimen/text_margin"
             android:layout_margin="@dimen/default_margin" />
@@ -54,13 +55,13 @@
             android:text="@string/button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/priceRTextView"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/pictureRImageView"
+            app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/colorTextWhite"
             android:textStyle="bold|normal"
             android:backgroundTint="@color/colorPrimary"
             android:layout_margin="@dimen/default_margin"
             android:drawableLeft="@drawable/ic_add_box_white_24dp" />
-
 
     </android.support.constraint.ConstraintLayout>
 

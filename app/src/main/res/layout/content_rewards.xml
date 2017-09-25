@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:text="@string/button_add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/quantityRTextView"
+        app:layout_constraintTop_toBottomOf="@id/rewardsQuantityTextView"
         app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/colorTextWhite"
         android:textStyle="bold|normal"
