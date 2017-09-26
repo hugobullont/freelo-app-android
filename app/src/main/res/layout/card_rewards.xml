@@ -13,39 +13,76 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/mainlayout"
+            android:layout_width="352dp"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="bottom"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/pictureRImageView"
+                android:layout_width="352dp"
+                android:layout_height="220dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/perro_manejando" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/translucent">
+
+                <TextView
+                    android:id="@+id/nameRTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin_base"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/sample_name"
+                    android:textSize="@dimen/title_cards_size"
+                    android:textColor="@color/colorTextWhite"
+                    android:textIsSelectable="true" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+
+        <!--<ImageView
             android:id="@+id/pictureRImageView"
-            android:layout_width="match_parent"
+            android:layout_width="352dp"
             android:layout_height="220dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/perro_manejando"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteX="8dp" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/nameRTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/pictureRImageView"
+            app:layout_constraintTop_toBottomOf="@id/pictureRImageView"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/sample_name"
             android:textStyle="bold"
             android:textSize="@dimen/text_margin"
-            android:layout_margin="@dimen/default_margin_base"
-            tools:layout_editor_absoluteX="24dp" />
+            android:layout_margin="@dimen/default_margin_base" />-->
 
         <TextView
             android:id="@+id/priceRTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sample_priece"
-            app:layout_constraintTop_toBottomOf="@+id/pictureRImageView"
+            app:layout_constraintTop_toBottomOf="@id/mainlayout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:textSize="@dimen/text_title_margin"
             android:layout_margin="@dimen/default_margin_base"
-            tools:layout_editor_absoluteX="236dp" />
+            tools:layout_editor_absoluteX="168dp" />
 
         <Button
             android:id="@+id/buttonR"
@@ -53,7 +90,7 @@
             android:layout_height="wrap_content"
             android:text="@string/button_text"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/priceRTextView"
+            app:layout_constraintTop_toBottomOf="@id/mainlayout"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/colorTextWhite"
             android:backgroundTint="@color/colorPrimary"
