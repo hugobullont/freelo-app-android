@@ -95,6 +95,7 @@ public class Reward {
 
     public Bundle toBundle(){
         Bundle bundle = new Bundle();
+        bundle.putString("idReward",getIdReward());
         bundle.putString("name", getName());
         bundle.putString("description", getDescription());
         bundle.putDouble("price", getPrice());
@@ -106,7 +107,8 @@ public class Reward {
     public static Reward from(Bundle bundle)
     {
         Reward reward = new Reward();
-        reward.setName(bundle.getString("name"))
+        reward.setIdReward(bundle.getString("idReward"))
+                .setName(bundle.getString("name"))
                 .setDescription(bundle.getString("description"))
                 .setPrice(bundle.getDouble("price"))
                 .setQuantity(bundle.getInt("quantity"))

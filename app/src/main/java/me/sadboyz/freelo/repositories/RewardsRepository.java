@@ -21,16 +21,11 @@ import static android.content.ContentValues.TAG;
  */
 
 public class RewardsRepository {
-    private static DatabaseReference mDatabase;
     private static RewardsRepository instance;
     private static List<Reward> rewards;
 
     public static RewardsRepository getInstance()
     {
-        if(mDatabase == null)
-        {
-            mDatabase = FirebaseDatabase.getInstance().getReference();
-        }
 
         if(rewards == null)
         {
@@ -43,9 +38,9 @@ public class RewardsRepository {
     }
 
     public RewardsRepository AddRewardToDatabase(String name, String description, Double price, int quantity, String pictureId, boolean status){
-        String key = mDatabase.child("rewards").push().getKey();
+        String key = DataReference.getInstance().child("rewards").push().getKey();
         Reward reward = new Reward(key,name,description,price,quantity,pictureId,status);
-        mDatabase.child("rewards").child(key).setValue(reward);
+        DataReference.getInstance().child("rewards").child(key).setValue(reward);
         return this;
     }
 
@@ -63,7 +58,7 @@ public class RewardsRepository {
 
     public void EventLoad()
     {
-        mDatabase.addValueEventListener(new ValueEventListener(){
+        DataReference.getInstance().addValueEventListener(new ValueEventListener(){
             @Override
             public void onDataChange(DataSnapshot dataSnapshot){
                 // This method is called once with the initial value and again whenever data at this location is updated.
