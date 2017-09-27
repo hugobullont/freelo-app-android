@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         this.setTitleView();
 
+
+
+
     }
 
     private void setTitleView() {
