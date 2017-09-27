@@ -1,44 +1,41 @@
 package me.sadboyz.freelo.repositories;
 
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-import me.sadboyz.freelo.models.Work;
+import me.sadboyz.freelo.global.SessionVariables;
+import me.sadboyz.freelo.models.Exchange;
 
 import static android.content.ContentValues.TAG;
 
 /**
- * Created by Hugo on 25/09/2017.
+ * Created by Hugo on 27/09/2017.
  */
 
-public class WorksRepository {
-    private static WorksRepository instance;
-    private static List<Work> works;
+public class ExchangeRepository {
+    private static ExchangeRepository instance;
+    private static List<Exchange> exchanges;
 
-    public static WorksRepository getInstance()
+    public static ExchangeRepository getInstance()
     {
-        if(works == null) works = new ArrayList<>();
+        if(exchanges == null) exchanges = new ArrayList<>();
         if(instance != null) return instance;
-        instance = new WorksRepository();
+        instance = new ExchangeRepository();
         return instance;
     }
 
-    public WorksRepository AddWorkToDatabase(String name, String description, Double basePrice, Double pubPrice, String createdBy, String workedBy, String idCategory, String status)
-    {
-        String key = DataReference.getInstance().child("works").push().getKey();
+    public ExchangeRepository AddExchangeToDatabase(String idUser, String idReward){
+        String key = DataReference.getInstance().child("exchanges").push().getKey();
         String date = Calendar.getInstance().getTime().toString();
-        Work work = new Work(key,name,description,basePrice,pubPrice,date,createdBy,workedBy,idCategory,status);
-        DataReference.getInstance().child("works").child(key).setValue(work);
+        Exchange exchange = new Exchange(key,idUser,idReward,date,false);
+        DataReference.getInstance().child("exchanges").child(key).setValue(exchange);
         return this;
     }
 
@@ -51,11 +48,11 @@ public class WorksRepository {
                 Log.d(TAG,"no of children: "+value);
 
                 Iterable<DataSnapshot> iterable = dataSnapshot.child("works").getChildren();
-                works = new ArrayList<Work>();
+                exchanges = new ArrayList<Exchange>();
                 while(iterable.iterator().hasNext()){
-                    Work work = iterable.iterator().next().getValue(Work.class);
-                    if(work.getStatus()=="open")
-                        works.add(work);
+                    Exchange exchange = iterable.iterator().next().getValue(Exchange.class);
+                    if(exchange.getIdUser() == SessionVariables.CurrentidUser)
+                        exchanges.add(exchange);
                 }
             }
 
@@ -66,5 +63,8 @@ public class WorksRepository {
         });
     }
 
-    public List<Work> getWorks() {return works;}
+    public List<Exchange> getExchangesOfUser()
+    {
+        return exchanges;
+    }
 }
