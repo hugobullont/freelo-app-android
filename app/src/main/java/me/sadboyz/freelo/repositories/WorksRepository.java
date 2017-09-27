@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import me.sadboyz.freelo.models.Application;
 import me.sadboyz.freelo.models.Work;
 
 import static android.content.ContentValues.TAG;
@@ -52,10 +53,15 @@ public class WorksRepository {
 
                 Iterable<DataSnapshot> iterable = dataSnapshot.child("works").getChildren();
                 works = new ArrayList<Work>();
+                List<Application> applications = ApplicationsRepository.getInstance().getApplicationsOfUser();
                 while(iterable.iterator().hasNext()){
                     Work work = iterable.iterator().next().getValue(Work.class);
-                    if(work.getStatus()=="open")
-                        works.add(work);
+                    if(work.getStatus()=="open") {
+                        for (Application application : applications) {
+                            if (work.getIdWork() == application.getIdWork()) continue;
+                            works.add(work);
+                        }
+                    }
                 }
             }
 

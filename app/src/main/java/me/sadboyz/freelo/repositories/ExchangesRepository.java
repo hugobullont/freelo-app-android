@@ -19,19 +19,19 @@ import static android.content.ContentValues.TAG;
  * Created by Hugo on 27/09/2017.
  */
 
-public class ExchangeRepository {
-    private static ExchangeRepository instance;
+public class ExchangesRepository {
+    private static ExchangesRepository instance;
     private static List<Exchange> exchanges;
 
-    public static ExchangeRepository getInstance()
+    public static ExchangesRepository getInstance()
     {
         if(exchanges == null) exchanges = new ArrayList<>();
         if(instance != null) return instance;
-        instance = new ExchangeRepository();
+        instance = new ExchangesRepository();
         return instance;
     }
 
-    public ExchangeRepository AddExchangeToDatabase(String idUser, String idReward){
+    public ExchangesRepository AddExchangeToDatabase(String idUser, String idReward){
         String key = DataReference.getInstance().child("exchanges").push().getKey();
         String date = Calendar.getInstance().getTime().toString();
         Exchange exchange = new Exchange(key,idUser,idReward,date,false);

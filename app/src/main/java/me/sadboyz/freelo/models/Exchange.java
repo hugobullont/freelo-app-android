@@ -82,7 +82,8 @@ public class Exchange {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public Exchange setStatus(boolean status) {
         this.status = status;
+        return this;
     }
 }
