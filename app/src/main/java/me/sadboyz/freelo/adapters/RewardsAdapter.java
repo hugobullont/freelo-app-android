@@ -1,12 +1,14 @@
 package me.sadboyz.freelo.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +19,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.util.List;
 
 import me.sadboyz.freelo.R;
+import me.sadboyz.freelo.activities.MainActivity;
+import me.sadboyz.freelo.activities.RewardsActivity;
 import me.sadboyz.freelo.models.Reward;
 import me.sadboyz.freelo.repositories.ImagesRepository;
 
@@ -57,11 +61,30 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHold
        // holder.quantityTextView.setText(String.valueOf(reward.getQuantity()));
         //holder.pictureImageView.setImageResource(reward.getPictureID());
 
+
         ImagesRepository.getInstance().GetStorageReferenceFor(reward.getPictureID())
                 .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Glide.with(fragment).load(uri.toString()).into(holder.pictureImageView);
+            }
+        });
+
+
+        holder.buttonR.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, RewardsActivity.class);
+                intent.putExtras(reward.toBundle());
+                context.startActivity(intent);
+
+                /*
+                Context context = view.getContext();
+                Intent intent = new Intent(context,RewardsActivity.class);
+                context.startActivity(intent);*/
+
             }
         });
 
@@ -99,6 +122,7 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHold
         TextView priceTextView;
         //TextView quantityTextView;
         ImageView pictureImageView;
+        Button buttonR;
         public ViewHolder(View itemView) {
             super(itemView);
             nameTextView  =(TextView)itemView.findViewById(R.id.nameRTextView);
@@ -106,6 +130,7 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHold
             priceTextView = (TextView)itemView.findViewById(R.id.priceRTextView);
             // quantityTextView  =(TextView)itemView.findViewById(R.id.quantityRTextView);
             pictureImageView = (ImageView)itemView.findViewById(R.id.pictureRImageView);
+            buttonR = (Button)itemView.findViewById(R.id.buttonR);
         }
     }
 }

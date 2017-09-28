@@ -8,20 +8,20 @@
     tools:context="me.sadboyz.freelo.activities.MainActivity">
 
 
+
     <ImageView
         android:id="@+id/rewardsPictureView"
         android:layout_width="390dp"
-        android:layout_height="280dp"
+        android:layout_height="288dp"
         android:src="@mipmap/perro_manejando"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/default_margin"
-        tools:layout_editor_absoluteX="0dp"
-        android:layout_marginTop="0dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
-    <TextView
+   <TextView
         android:id="@+id/rewardsNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,31 +37,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_description"
-        app:layout_constraintTop_toBottomOf="@id/rewardsNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/rewardsNameTextView"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="@dimen/text_margin"
         android:textStyle="bold|italic"
-        android:layout_margin="@dimen/default_margin"/>
+        android:layout_margin="@dimen/default_margin"
+        tools:layout_editor_absoluteX="8dp" />
     <TextView
         android:id="@+id/rewardsPriceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_priece"
-        app:layout_constraintTop_toBottomOf="@id/rewardsDescriptionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/rewardsDescriptionTextView"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="@dimen/text_margin"
         android:textStyle="bold|italic"
-        android:layout_margin="@dimen/default_margin"/>
+        android:layout_margin="@dimen/default_margin"
+        tools:layout_editor_absoluteX="8dp" />
     <TextView
         android:id="@+id/rewardsQuantityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_quantity"
-        app:layout_constraintTop_toBottomOf="@id/rewardsPriceTextView"
+        app:layout_constraintTop_toBottomOf="@+id/rewardsPriceTextView"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="@dimen/text_margin"
         android:textStyle="bold|italic"
-        android:layout_margin="@dimen/default_margin"/>
+        android:layout_margin="@dimen/default_margin"
+        tools:layout_editor_absoluteX="8dp" />
 
     <Button
         android:id="@+id/buttonR"
@@ -69,11 +72,12 @@
         android:layout_height="wrap_content"
         android:text="@string/button_add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rewardsQuantityTextView"
+        app:layout_constraintTop_toBottomOf="@+id/rewardsQuantityTextView"
         app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/colorTextWhite"
         android:textStyle="bold|normal"
         android:backgroundTint="@color/colorPrimary"
         android:layout_margin="@dimen/default_margin"
-        android:drawableLeft="@drawable/ic_star_white_24dp"/>
+        android:drawableLeft="@drawable/ic_star_white_24dp"
+        tools:layout_editor_absoluteX="288dp" />
 </android.support.constraint.ConstraintLayout>

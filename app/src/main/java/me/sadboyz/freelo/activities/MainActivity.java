@@ -16,6 +16,7 @@ import me.sadboyz.freelo.R;
 import me.sadboyz.freelo.fragments.NewWorkFragment;
 import me.sadboyz.freelo.fragments.NotificationsFragment;
 import me.sadboyz.freelo.fragments.RewardsFragment;
+import me.sadboyz.freelo.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         this.setTitleView();
+        navigateAccordingTo(R.id.navigation_search);
+
+
+
 
     }
 
@@ -61,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
         switch (id)
         {
             case R.id.navigation_search:
-                return null;
-                //return new SearchFragment();
+                return new SearchFragment();
             case R.id.navigation_rewards:
                 return new RewardsFragment();
             case R.id.navigation_new_work:
