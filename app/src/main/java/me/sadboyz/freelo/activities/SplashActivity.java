@@ -9,6 +9,7 @@ import me.sadboyz.freelo.R;
 import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.CategoriesRepository;
 import me.sadboyz.freelo.repositories.ExchangesRepository;
+import me.sadboyz.freelo.repositories.ProfilesRepository;
 import me.sadboyz.freelo.repositories.RewardsRepository;
 import me.sadboyz.freelo.repositories.TransactionsRepository;
 import me.sadboyz.freelo.repositories.UsersRepository;
@@ -41,5 +42,6 @@ public class SplashActivity extends AppCompatActivity {
         ApplicationsRepository.getInstance().EventLoad();
         ExchangesRepository.getInstance().EventLoad();
         TransactionsRepository.getInstance().EventLoad();
+        ProfilesRepository.getInstance().EventLoad();
     }
 }
