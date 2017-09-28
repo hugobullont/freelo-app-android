@@ -51,7 +51,7 @@ public class ExchangesRepository {
                 exchanges = new ArrayList<Exchange>();
                 while(iterable.iterator().hasNext()){
                     Exchange exchange = iterable.iterator().next().getValue(Exchange.class);
-                    if(exchange.getIdUser() == SessionVariables.CurrentidUser)
+                    if(exchange.getIdUser().equals(SessionVariables.CurrentidUser))
                         exchanges.add(exchange);
                 }
             }

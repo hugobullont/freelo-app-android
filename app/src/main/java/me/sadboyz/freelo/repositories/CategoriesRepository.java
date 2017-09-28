@@ -68,7 +68,7 @@ public class CategoriesRepository {
     {
         Category category = new Category();
         for (Category cat: categories) {
-            if(cat.getName() == name) category = cat;
+            if(cat.getName().equals(name)) category = cat;
         }
         return category;
     }

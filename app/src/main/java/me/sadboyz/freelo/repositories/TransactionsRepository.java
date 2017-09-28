@@ -53,7 +53,7 @@ public class TransactionsRepository {
                 transactions = new ArrayList<Transaction>();
                 while(iterable.iterator().hasNext()){
                     Transaction transaction = iterable.iterator().next().getValue(Transaction.class);
-                    if(transaction.getIdUser() == SessionVariables.CurrentidUser)
+                    if(transaction.getIdUser().equals(SessionVariables.CurrentidUser))
                         transactions.add(transaction);
                 }
             }

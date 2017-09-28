@@ -57,7 +57,7 @@ public class UsersRepository {
                 Iterable<DataSnapshot> iterable = dataSnapshot.child("users").getChildren();
                 while(iterable.iterator().hasNext()){
                     User user = iterable.iterator().next().getValue(User.class);
-                    if(user.getIdFacebook() == idFacebook) setCurrentUser(user);
+                    if(user.getIdFacebook().equals(idFacebook)) setCurrentUser(user);
                 }
             }
 

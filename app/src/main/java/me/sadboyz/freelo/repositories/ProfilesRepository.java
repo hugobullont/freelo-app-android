@@ -64,7 +64,7 @@ public class ProfilesRepository {
     public Profile GetProfileByUserId(String idUser)
     {
         for (Profile profile:profiles) {
-            if(profile.getIdUser() == idUser)
+            if(profile.getIdUser().equals(idUser))
                 return profile;
         }
         return null;
