@@ -6,8 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import me.sadboyz.freelo.R;
+import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.CategoriesRepository;
+import me.sadboyz.freelo.repositories.ExchangesRepository;
 import me.sadboyz.freelo.repositories.RewardsRepository;
+import me.sadboyz.freelo.repositories.TransactionsRepository;
+import me.sadboyz.freelo.repositories.UsersRepository;
 import me.sadboyz.freelo.repositories.WorksRepository;
 
 
@@ -34,6 +38,8 @@ public class SplashActivity extends AppCompatActivity {
         RewardsRepository.getInstance().EventLoad();
         WorksRepository.getInstance().EventLoad();
         CategoriesRepository.getInstance().EventLoad();
-        //RewardsRepository.getInstance().SetActiveRewards();
+        ApplicationsRepository.getInstance().EventLoad();
+        ExchangesRepository.getInstance().EventLoad();
+        TransactionsRepository.getInstance().EventLoad();
     }
 }
