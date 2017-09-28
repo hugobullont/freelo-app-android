@@ -44,9 +44,9 @@ public class ProfilesRepository {
         DataReference.getInstance().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                long value = dataSnapshot.child("applications").getChildrenCount();
+                long value = dataSnapshot.child("profiles").getChildrenCount();
                 Log.d(TAG,"no of children: "+value);
-                Iterable<DataSnapshot> iterable = dataSnapshot.child("applications").getChildren();
+                Iterable<DataSnapshot> iterable = dataSnapshot.child("profiles").getChildren();
                 profiles = new ArrayList<Profile>();
                 while(iterable.iterator().hasNext()){
                     Profile profile = iterable.iterator().next().getValue(Profile.class);
