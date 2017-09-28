@@ -23,13 +23,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-
-            <pl.droidsonroids.gif.GifImageView
+            <ImageView
                 android:id="@+id/pictureRImageView"
-                android:layout_width="369dp"
+                android:layout_width="352dp"
                 android:layout_height="220dp"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/loadingp"/>
+                android:src="@mipmap/perro_manejando" />
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

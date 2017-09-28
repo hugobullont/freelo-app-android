@@ -27,4 +27,15 @@
     <string name="title_base_priece_new_work_fragment">Cuanto Invertiras</string>
     <string name="title_new_freelo_new_work_fragment">Nuevo Freelo</string>
     <string name="button_create">CREAR</string>
+
+    <string name="cancel_login">Se canceló la operación</string>
+    <string name="error_login">Ocurrió un error al ingresar</string>
+    <string name="logout">Logout</string>
+
+    <string name="firebase_error_login">Error con firebase al momento de loguear</string>
+
+    <string name="Mi_perfil">Mi perfil</string>
+
+    <string name="facebook_app_id">1528762440479387</string>
+
 </resources>
