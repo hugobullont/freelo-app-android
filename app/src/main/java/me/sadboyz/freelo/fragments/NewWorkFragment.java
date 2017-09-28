@@ -72,7 +72,7 @@ public class NewWorkFragment extends Fragment {
                     wr.AddWorkToDatabase(nameTextInput.getText().toString(),
                             descriptionTextInput.getText().toString(), 0.9 * Double.parseDouble(prieceTextInput.getText().toString()),
                             Double.parseDouble(prieceTextInput.getText().toString()),
-                            SessionVariables.CurrentidUser, "",
+                            SessionVariables.CurrentidUser,
                             parseSelected((String) spinner.getSelectedItem()).getIdCategory());
                     Toast.makeText(getContext(),"Freelo Creado",Toast.LENGTH_SHORT).show();
                 }
