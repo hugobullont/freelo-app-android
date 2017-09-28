@@ -1,0 +1,65 @@
+<android.support.constraint.ConstraintLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:padding="@dimen/text_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tittleTextView"
+        android:text="@string/title_new_freelo_new_work_fragment"
+        android:textSize="@dimen/title_cards_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/nameInputTextView"
+        android:padding="@dimen/text_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tittleTextView"
+        android:layout_width="wrap_content"
+        android:hint="@string/title_name_new_work_fragment"
+        android:layout_height="wrap_content" />
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/descriptionInputTextView"
+        android:padding="@dimen/text_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameInputTextView"
+        android:hint="@string/title_description_new_work_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <android.support.design.widget.TextInputEditText
+        android:padding="@dimen/text_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pubPrieceInputTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/title_base_priece_new_work_fragment"
+        app:layout_constraintTop_toBottomOf="@id/descriptionInputTextView"
+        />
+    <Spinner
+        android:padding="@dimen/text_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/categorySpinner"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pubPrieceInputTextView"
+        />
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="wrap_content"
+        android:padding="@dimen/text_margin"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categorySpinner"
+        android:text="@string/button_create"
+        />
+
+</android.support.constraint.ConstraintLayout>

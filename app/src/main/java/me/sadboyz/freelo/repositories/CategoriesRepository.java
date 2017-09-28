@@ -63,4 +63,13 @@ public class CategoriesRepository {
     public List<Category> getCategories(){
         return categories;
     }
+
+    public Category getCategoryByName(String name)
+    {
+        Category category = new Category();
+        for (Category cat: categories) {
+            if(cat.getName() == name) category = cat;
+        }
+        return category;
+    }
 }
