@@ -46,10 +46,10 @@ public class TransactionsRepository {
         DataReference.getInstance().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                long value = dataSnapshot.child("categories").getChildrenCount();
+                long value = dataSnapshot.child("transactions").getChildrenCount();
                 Log.d(TAG,"no of children: "+value);
 
-                Iterable<DataSnapshot> iterable = dataSnapshot.child("works").getChildren();
+                Iterable<DataSnapshot> iterable = dataSnapshot.child("transactions").getChildren();
                 transactions = new ArrayList<Transaction>();
                 while(iterable.iterator().hasNext()){
                     Transaction transaction = iterable.iterator().next().getValue(Transaction.class);

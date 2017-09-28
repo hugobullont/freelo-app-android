@@ -34,11 +34,11 @@ public class WorksRepository {
         return instance;
     }
 
-    public WorksRepository AddWorkToDatabase(String name, String description, Double basePrice, Double pubPrice, String createdBy, String workedBy, String idCategory, String status)
+    public WorksRepository AddWorkToDatabase(String name, String description, Double basePrice, Double pubPrice, String createdBy, String idCategory)
     {
         String key = DataReference.getInstance().child("works").push().getKey();
         String date = Calendar.getInstance().getTime().toString();
-        Work work = new Work(key,name,description,basePrice,pubPrice,date,createdBy,workedBy,idCategory,status);
+        Work work = new Work(key,name,description,basePrice,pubPrice,date,createdBy,"null",idCategory,"open");
         DataReference.getInstance().child("works").child(key).setValue(work);
         return this;
     }

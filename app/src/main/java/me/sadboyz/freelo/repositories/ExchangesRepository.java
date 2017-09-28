@@ -44,10 +44,10 @@ public class ExchangesRepository {
         DataReference.getInstance().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                long value = dataSnapshot.child("works").getChildrenCount();
+                long value = dataSnapshot.child("exchanges").getChildrenCount();
                 Log.d(TAG,"no of children: "+value);
 
-                Iterable<DataSnapshot> iterable = dataSnapshot.child("works").getChildren();
+                Iterable<DataSnapshot> iterable = dataSnapshot.child("exchanges").getChildren();
                 exchanges = new ArrayList<Exchange>();
                 while(iterable.iterator().hasNext()){
                     Exchange exchange = iterable.iterator().next().getValue(Exchange.class);

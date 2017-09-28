@@ -21,6 +21,14 @@
     <string name="button_text">More Info</string>
     <string name="button_add">Add</string>
 
+    <string name="sample_name_work">Sample Work</string>
+    <string name="sample_description_work">Sample Description Work</string>
+    <string name="sample_pubPrice_work">Sample Price</string>
+    <string name="sample_date_work">Sample Date</string>
+    <string name="sample_createdBy_work">Sample Creator</string>
+    <string name="sample_categoryId_work">Sample Category</string>
+    <string name="sample_status_work">Sample Status</string>
+    <string name="button_apply_work">Aplicar</string>
 
     <string name="title_name_new_work_fragment">Nombra tu Freelo</string>
     <string name="title_description_new_work_fragment">Describe tu Freelo</string>
