@@ -32,7 +32,7 @@
                     android:id="@+id/rewardsPictureView"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:src="@mipmap/loadingp"
+                    android:src="@mipmap/loadinggif"
                     android:scaleType="centerCrop"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
