@@ -9,75 +9,132 @@
 
 
 
-    <ImageView
-        android:id="@+id/rewardsPictureView"
-        android:layout_width="390dp"
-        android:layout_height="288dp"
-        android:src="@mipmap/perro_manejando"
-        android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="@dimen/default_margin"
-        tools:layout_editor_absoluteX="0dp" />
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-   <TextView
-        android:id="@+id/rewardsNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sample_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rewardsPictureView"
-        android:textStyle="bold|italic"
-        android:textSize="@dimen/text_title_margin"
-        android:layout_margin="@dimen/default_margin" />
+                <FrameLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/mainlayout"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:foregroundGravity="bottom"
+                    app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:layout_editor_absoluteX="0dp">
 
-    <TextView
-        android:id="@+id/rewardsDescriptionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sample_description"
-        app:layout_constraintTop_toBottomOf="@+id/rewardsNameTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="@dimen/text_margin"
-        android:textStyle="bold|italic"
-        android:layout_margin="@dimen/default_margin"
-        tools:layout_editor_absoluteX="8dp" />
-    <TextView
-        android:id="@+id/rewardsPriceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sample_priece"
-        app:layout_constraintTop_toBottomOf="@+id/rewardsDescriptionTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="@dimen/text_margin"
-        android:textStyle="bold|italic"
-        android:layout_margin="@dimen/default_margin"
-        tools:layout_editor_absoluteX="8dp" />
-    <TextView
-        android:id="@+id/rewardsQuantityTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sample_quantity"
-        app:layout_constraintTop_toBottomOf="@+id/rewardsPriceTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="@dimen/text_margin"
-        android:textStyle="bold|italic"
-        android:layout_margin="@dimen/default_margin"
-        tools:layout_editor_absoluteX="8dp" />
 
-    <Button
-        android:id="@+id/buttonR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rewardsQuantityTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/colorTextWhite"
-        android:textStyle="bold|normal"
-        android:backgroundTint="@color/colorPrimary"
-        android:layout_margin="@dimen/default_margin"
-        android:drawableLeft="@drawable/ic_star_white_24dp"
-        tools:layout_editor_absoluteX="288dp" />
-</android.support.constraint.ConstraintLayout>
+                    <pl.droidsonroids.gif.GifImageButton
+                        android:id="@+id/rewardsPictureView"
+                        android:layout_width="match_parent"
+                        android:layout_height="251dp"
+                        android:src="@mipmap/loadinggif"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_margin="@dimen/default_margin"
+                        tools:layout_editor_absoluteX="0dp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@color/translucent">
+
+                        <TextView
+                            android:id="@+id/rewardsNameTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/default_margin_base"
+                            android:text="@string/sample_name"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/colorTextWhite"
+                            android:textIsSelectable="true"
+                            android:textSize="@dimen/title_cards_size" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!--
+                    <FrameLayout
+                        android:id="@+id/textlayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/mainlayout"
+                        android:layout_margin="@dimen/text_margin">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <WebView
+                                android:id="@+id/rewardsDescriptionTextView"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent">
+
+
+                            </WebView>
+                        </LinearLayout>
+                    </FrameLayout>
+
+
+         -->
+                       <TextView
+                           android:id="@+id/rewardsDescriptionTextView"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/sample_description"
+                           android:textAlignment="inherit"
+                           app:layout_constraintTop_toBottomOf="@+id/mainlayout"
+                           app:layout_constraintStart_toStartOf="parent"
+                           android:textSize="@dimen/text_margin"
+                           android:layout_margin="@dimen/default_margin"
+                           tools:layout_editor_absoluteX="8dp" />
+
+
+                        <TextView
+                            android:id="@+id/rewardsPriceTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sample_priece"
+                            app:layout_constraintTop_toBottomOf="@+id/rewardsDescriptionTextView"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:textSize="@dimen/text_margin"
+                            android:layout_margin="@dimen/default_margin"
+                            tools:layout_editor_absoluteX="8dp" />
+                        <TextView
+                            android:id="@+id/rewardsQuantityTextView"
+                           android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sample_quantity"
+                            app:layout_constraintTop_toBottomOf="@+id/rewardsPriceTextView"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:textSize="@dimen/text_margin"
+                            android:layout_margin="@dimen/default_margin"
+                            tools:layout_editor_absoluteX="8dp" />
+
+                        <Button
+                            android:id="@+id/buttonR"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/button_add"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/rewardsQuantityTextView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:textColor="@color/colorTextWhite"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:layout_margin="@dimen/default_margin"
+                            android:drawableLeft="@drawable/ic_star_white_24dp"
+                            tools:layout_editor_absoluteX="272dp" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </ScrollView>
+
+
+
+            </android.support.constraint.ConstraintLayout>
