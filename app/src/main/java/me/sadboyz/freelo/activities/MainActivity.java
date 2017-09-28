@@ -8,14 +8,12 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import me.sadboyz.freelo.R;
+import me.sadboyz.freelo.fragments.NewWorkFragment;
 import me.sadboyz.freelo.fragments.NotificationsFragment;
 import me.sadboyz.freelo.fragments.RewardsFragment;
 
@@ -68,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.navigation_rewards:
                 return new RewardsFragment();
             case R.id.navigation_new_work:
-                return null;
-                //return new NewWorkFragment();
+                return new NewWorkFragment();
             case R.id.navigation_notifications:
                 return new NotificationsFragment();
             case R.id.navigation_profile:
