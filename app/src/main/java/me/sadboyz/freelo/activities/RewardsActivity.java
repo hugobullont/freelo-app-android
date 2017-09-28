@@ -1,5 +1,6 @@
 package me.sadboyz.freelo.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -22,6 +24,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import me.sadboyz.freelo.R;
 import me.sadboyz.freelo.models.Reward;
 import me.sadboyz.freelo.repositories.ImagesRepository;
+
+import static android.R.attr.fragment;
 
 /**
  * Created by Leonel on 26/09/2017.
@@ -35,16 +39,19 @@ public class RewardsActivity extends AppCompatActivity {
     ImageView pictureImageView;
 
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rewards);
         Reward reward = Reward.from(getIntent().getExtras());
-        loadInfoRewards(reward);
+        loadInfoRewards(reward,this);
         this.setTitleView();
 
 
     }
+
+
 
     private void setTitleView() {
         TextView tv = new TextView(getApplicationContext());
@@ -59,31 +66,36 @@ public class RewardsActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(tv);
     }
 
-    private void loadInfoRewards(final Reward reward) {
+    private void loadInfoRewards(final Reward reward, final Activity activity) {
         nameTextView = (TextView)findViewById(R.id.rewardsNameTextView);
-        descriptionTextView= (TextView)findViewById(R.id.rewardsDescriptionTextView);
+        descriptionTextView =(TextView)findViewById(R.id.rewardsDescriptionTextView);
         priceTextView = (TextView)findViewById(R.id.rewardsPriceTextView);
         quantityTextView = (TextView)findViewById(R.id.rewardsQuantityTextView);
         pictureImageView = (ImageView)findViewById(R.id.rewardsPictureView);
 
 
-        nameTextView.setText(reward.getName());
+        nameTextView.setText(" " + reward.getName());
         descriptionTextView.setText(reward.getDescription());
-        priceTextView.setText(String.format("%.2f",reward.getPrice()));
-        quantityTextView.setText(String.valueOf(reward.getQuantity()));
-        //pictureImageView.setImageResource(reward.getPictureID());
-
-
-        /*ImagesRepository.getInstance().GetStorageReferenceFor(reward.getPictureID())
+        priceTextView.setText("Precio :  " + "S/ " +String.format("%.2f",reward.getPrice()));
+        quantityTextView.setText("Cantidad : "+String.valueOf(reward.getQuantity()));
+        ImagesRepository.getInstance().GetStorageReferenceFor(reward.getPictureID())
                 .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Glide.with(fragment).load(uri.toString()).into(holder.pictureImageView);
+                Glide.with(activity).load(uri.toString()).into(pictureImageView);
             }
-        });*/
+        });
 
 
+        /*
+
+        WebView webView = (WebView)findViewById(R.id.rewardsDescriptionTextView);
+        descriptionTextView.setText(String.format("%s",reward.getDescription()));
+        webView.loadData("<p style=\"text-align: justify\">"+ descriptionTextView +"</p>","text/html","UTF-8");
+
+        */
     }
+
 
 
 }
