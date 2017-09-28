@@ -23,13 +23,16 @@ public class SearchAdapter  extends RecyclerView.Adapter<SearchAdapter.ViewHolde
     }
 
     public SearchAdapter(List<Work> works) {
+
         this.setWorks(works);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.fragment_search,parent,false)
+        return new ViewHolder(
+                LayoutInflater
+                    .from(parent.getContext())
+                    .inflate(R.layout.card_search,parent,false)
         );
     }
 
@@ -37,7 +40,9 @@ public class SearchAdapter  extends RecyclerView.Adapter<SearchAdapter.ViewHolde
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Work work = getWorks().get(position);
         holder.nameTextView.setText(work.getName());
-        holder.pubPriceTextView.setText(String.format("%.2f",work.getPubPrice()));
+        holder.pubPriceTextView.setText(String.format("%.2f",work.getPubPrice()
+                )
+        );
     }
 
     @Override

@@ -56,11 +56,14 @@ public class WorksRepository {
                 List<Application> applications = ApplicationsRepository.getInstance().getApplicationsOfUser();
                 while(iterable.iterator().hasNext()){
                     Work work = iterable.iterator().next().getValue(Work.class);
-                    if(work.getStatus()=="open") {
-                        for (Application application : applications) {
-                            if (work.getIdWork() == application.getIdWork()) continue;
+                    if(work.getStatus().equals("open")) {
+                        works.add(work);
+                        /*for (Application application : applications) {
+                            if (work.getIdWork().equals(application.getIdWork())) continue;
                             works.add(work);
-                        }
+                        }*/
+
+
                     }
                 }
             }
