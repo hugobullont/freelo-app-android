@@ -32,6 +32,11 @@ import me.sadboyz.freelo.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextInputEditText idProfileTextInputEditText;
+    private TextInputEditText nameProfileTextInputEditText;
+    private TextInputEditText lastanameTextInputEditText;
+    private TextInputEditText emailTextInputEditText;
+
     private TextView mTextMessage;
     private TextView mTitle;
 
@@ -45,18 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
-    private TextInputEditText idProfileTextInputEditText;
-    private TextInputEditText nameProfileTextInputEditText;
-    private TextInputEditText lastanameTextInputEditText;
-    private TextInputEditText emailTextInputEditText;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_login);
         setContentView(R.layout.activity_main);
-
-       /*idProfileTextInputEditText = (TextInputEditText) findViewById(R.id.idProfileInputTextView);
+/*
+        idProfileTextInputEditText = (TextInputEditText) findViewById(R.id.idProfileInputTextView);
         nameProfileTextInputEditText = (TextInputEditText) findViewById(R.id.nameInputTextView);
         lastanameTextInputEditText = (TextInputEditText) findViewById(R.id.lastnameProfileInputTextView);
         emailTextInputEditText = (TextInputEditText) findViewById(R.id.emailProfileInputTextView);
@@ -72,27 +72,24 @@ public class MainActivity extends AppCompatActivity {
             lastanameTextInputEditText.setText("");
             emailTextInputEditText.setText(email);
             idProfileTextInputEditText.setText(id);
-
-
-
-
-
-
-        }else
-        {
+        }else {
             goLoginScreen();
-        }*/
+        }
+*/
+
+
+
         if(AccessToken.getCurrentAccessToken()==null)
         {
             goLoginScreen();
+        }else {
 
+            setContentView(R.layout.activity_main);
+            BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+            navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+            this.setTitleView();
+            navigateAccordingTo(R.id.navigation_search);
         }
-
-        setContentView(R.layout.activity_main);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        this.setTitleView();
-        navigateAccordingTo(R.id.navigation_search);
 
     }
 

@@ -36,6 +36,12 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar firebaseProgressBar;
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode,resultCode,data);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -47,8 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                //goMainScreen();
-                handleFacebookAccessToken(loginResult.getAccessToken());
+                goMainScreen();
+                //handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
             @Override
@@ -75,6 +81,17 @@ public class LoginActivity extends AppCompatActivity {
         };
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(firebaseAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        firebaseAuth.removeAuthStateListener(firebaseAuthListener);
+    }
 
     private void handleFacebookAccessToken(AccessToken accessToken) {
 
@@ -102,22 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode,resultCode,data);
-    }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        firebaseAuth.addAuthStateListener(firebaseAuthListener);
-    }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        firebaseAuth.removeAuthStateListener(firebaseAuthListener);
-    }
 }
