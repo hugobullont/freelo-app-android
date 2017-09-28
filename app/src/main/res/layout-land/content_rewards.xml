@@ -30,8 +30,8 @@
 
                 <pl.droidsonroids.gif.GifImageButton
                     android:id="@+id/rewardsPictureView"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_width="570dp"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/loadinggif"
                     android:scaleType="centerCrop"
                     app:layout_constraintTop_toTopOf="parent"

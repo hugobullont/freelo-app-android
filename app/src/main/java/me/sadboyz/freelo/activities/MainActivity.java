@@ -79,17 +79,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        if(AccessToken.getCurrentAccessToken()==null)
+        /*if(AccessToken.getCurrentAccessToken()==null)
         {
             goLoginScreen();
-        }else {
+        }else {*/
 
             setContentView(R.layout.activity_main);
             BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
             navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
             this.setTitleView();
             navigateAccordingTo(R.id.navigation_search);
-        }
+        /*}*/
 
     }
 
