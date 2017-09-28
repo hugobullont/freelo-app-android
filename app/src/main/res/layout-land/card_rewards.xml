@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+       <!-- <ImageView
             android:id="@+id/pictureRImageView"
             android:layout_width="300dp"
             android:layout_height="240dp"
@@ -24,9 +24,47 @@
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="0dp"
             android:layout_marginBottom="0dp"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0" /> -->
 
-        <TextView
+        <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/mainlayout"
+            android:layout_width="294dp"
+            android:layout_height="245dp"
+            android:foregroundGravity="bottom"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteY="0dp">
+
+            <ImageView
+                android:id="@+id/pictureRImageView"
+                android:layout_width="300dp"
+                android:layout_height="240dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/perro_manejando" />
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/translucent">
+
+                <TextView
+                    android:id="@+id/nameRTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin_base"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/sample_name"
+                    android:textSize="@dimen/title_cards_size"
+                    android:textColor="@color/colorTextWhite"
+                    android:textIsSelectable="true" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+       <!-- <TextView
             android:id="@+id/nameRTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,18 +73,21 @@
             android:text="@string/sample_name"
             android:textStyle="bold|italic"
             android:textSize="@dimen/text_margin"
-            android:layout_margin="@dimen/default_margin" />
+            android:layout_margin="@dimen/default_margin" /> -->
 
         <TextView
             android:id="@+id/priceRTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="271dp"
+            android:layout_height="54dp"
             android:text="@string/sample_priece"
-            app:layout_constraintTop_toBottomOf="@id/nameRTextView"
-            app:layout_constraintStart_toEndOf="@id/pictureRImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:textStyle="italic"
-            android:textSize="@dimen/text_margin"
-            android:layout_margin="@dimen/default_margin" />
+            android:textSize="@dimen/text_title_margin"
+            android:layout_margin="@dimen/default_margin"
+            android:gravity="center"
+            tools:layout_editor_absoluteX="290dp" />
 
         <Button
             android:id="@+id/buttonR"
@@ -55,7 +96,6 @@
             android:text="@string/button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/priceRTextView"
-            app:layout_constraintStart_toEndOf="@id/pictureRImageView"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/colorTextWhite"
             android:backgroundTint="@color/colorPrimary"

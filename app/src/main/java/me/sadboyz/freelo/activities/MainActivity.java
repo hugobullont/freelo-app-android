@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         this.setTitleView();
         navigateAccordingTo(R.id.navigation_search);
 
+
+
+
     }
 
     private void setTitleView() {
