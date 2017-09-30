@@ -40,7 +40,7 @@ public class SearchAdapter  extends RecyclerView.Adapter<SearchAdapter.ViewHolde
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Work work = getWorks().get(position);
         holder.nameTextView.setText(work.getName());
-        holder.pubPriceTextView.setText(String.format("%.2f",work.getPubPrice()
+        holder.pubPriceTextView.setText("S/ "+String.format("%.2f",work.getPubPrice()
                 )
         );
     }
