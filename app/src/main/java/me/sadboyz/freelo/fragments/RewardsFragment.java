@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +58,7 @@ public class RewardsFragment extends Fragment {
         rewardLayoutManager= new LinearLayoutManager(view.getContext());
         rewardsRecyclerView.setLayoutManager(rewardLayoutManager);
         rewards = RewardsRepository.getInstance().getRewards();
-        rewardsAdapter = new RewardsAdapter(rewards,this);
+        rewardsAdapter = new RewardsAdapter(rewards, Glide.with(this));
         rewardsRecyclerView.setAdapter(rewardsAdapter);
         return view;
     }

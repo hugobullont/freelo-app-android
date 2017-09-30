@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnSuccessListener;
 
@@ -31,14 +32,15 @@ import me.sadboyz.freelo.repositories.ImagesRepository;
 public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHolder> {
 
     private List<Reward> rewards;
-    private Fragment fragment;
+    private RequestManager glide;
 
     public RewardsAdapter() {
     }
 
-    public RewardsAdapter(List<Reward> rewards, Fragment fragment) {
+    public RewardsAdapter(List<Reward> rewards, RequestManager glide) {
+        this.glide = glide;
         this.setRewards(rewards);
-        this.setFragment(fragment);
+
     }
 
 
@@ -66,7 +68,8 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHold
                 .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Glide.with(fragment).load(uri.toString()).into(holder.pictureImageView);
+                //Glide.with(fragment.getActivity().getApplicationContext()).load(uri.toString()).into(holder.pictureImageView);
+                glide.load(uri.toString()).into(holder.pictureImageView);
             }
         });
 
@@ -108,12 +111,9 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.ViewHold
         return this;
     }
 
-    public Fragment getFragment() {
-        return fragment;
-    }
 
-    public void setFragment(Fragment fragment) {
-        this.fragment = fragment;
+    public RequestManager getGlide() {
+        return glide;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

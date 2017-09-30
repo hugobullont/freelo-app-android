@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import me.sadboyz.freelo.R;
@@ -74,15 +75,21 @@ public class RewardsActivity extends AppCompatActivity {
         //pictureImageView.setImageResource(reward.getPictureID());
 
 
-        /*ImagesRepository.getInstance().GetStorageReferenceFor(reward.getPictureID())
+        ImagesRepository.getInstance().GetStorageReferenceFor(reward.getPictureID())
                 .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Glide.with(fragment).load(uri.toString()).into(holder.pictureImageView);
+                //Glide.with(getApplicationContext()).load(uri.toString()).into(pictureImageView);
+                loadImage(Glide.with(getApplicationContext()),uri.toString(),pictureImageView);
             }
-        });*/
+        });
 
 
+    }
+
+    public void loadImage(RequestManager glide, String url, ImageView view)
+    {
+        glide.load(url).into(view);
     }
 
 

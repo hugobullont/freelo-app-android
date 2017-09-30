@@ -14,29 +14,33 @@
 
         <TextView
 
-            android:id="@+id/nameSTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SampleName"
-            android:textStyle="bold"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-
-
-          />
-        <TextView
-
             android:id="@+id/pubPriceTextView"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SamplePub"
             android:layout_margin="@dimen/default_margin"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/nameSTextView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-        />
+            />
+
+        <TextView
+
+            android:id="@+id/nameSTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SampleName"
+            android:textStyle="bold"
+            android:gravity="left"
+            android:textAlignment="gravity"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/pubPriceTextView"
+
+          />
+
 
 
 
