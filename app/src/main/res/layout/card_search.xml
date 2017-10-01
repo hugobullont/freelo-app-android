@@ -23,23 +23,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             />
-
-        <TextView
-
-            android:id="@+id/nameSTextView"
-            android:layout_width="match_parent"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:text="SampleName"
-            android:textStyle="bold"
-            android:gravity="left"
-            android:textAlignment="gravity"
-            android:layout_margin="@dimen/default_margin"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/pubPriceTextView"
+            app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                android:id="@+id/nameSTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SampleName"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:textAlignment="gravity"
+                android:layout_margin="@dimen/default_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+        </android.support.constraint.ConstraintLayout>
 
-          />
+
 
 
 
