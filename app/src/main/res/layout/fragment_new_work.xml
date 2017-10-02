@@ -5,16 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
+        android:layout_margin="@dimen/text_margin"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
         <android.support.constraint.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
     <TextView
-        android:padding="@dimen/text_margin"
-        android:layout_width="352dp"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tittleTextView"
         android:text="@string/title_new_freelo_new_work_fragment"
@@ -24,14 +25,12 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/nameInputLayout"
-        android:layout_width="390dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/text_margin"
-        android:layout_margin="@dimen/default_margin"
+        android:layout_margin="@dimen/text_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tittleTextView"
-        tools:layout_editor_absoluteX="8dp">
+        app:layout_constraintTop_toBottomOf="@id/tittleTextView">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/nameInputTextView"
                 android:layout_width="match_parent"
@@ -43,14 +42,12 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/descriptionInputLayout"
-        android:layout_width="390dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/text_margin"
-        android:layout_margin="@dimen/default_margin"
+        android:layout_margin="@dimen/text_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameInputLayout"
-        tools:layout_editor_absoluteX="8dp">
+        app:layout_constraintTop_toBottomOf="@id/nameInputLayout">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/descriptionInputTextView"
             android:layout_width="match_parent"
@@ -62,16 +59,15 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/pubPrieceInputLayout"
-        android:layout_width="390dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/text_margin"
-        android:layout_margin="@dimen/default_margin"
+        android:layout_margin="@dimen/text_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionInputLayout"
-        tools:layout_editor_absoluteX="8dp">
+        app:layout_constraintTop_toBottomOf="@id/descriptionInputLayout">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/pubPrieceInputTextView"
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/title_base_priece_new_work_fragment"/>
@@ -80,14 +76,13 @@
 
     <Spinner
         android:id="@+id/categorySpinner"
-        android:padding="@dimen/text_margin"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pubPrieceInputLayout"
         tools:layout_editor_absoluteX="8dp"
-        android:layout_margin="@dimen/default_margin"
+        android:layout_margin="@dimen/text_margin"
         android:spinnerMode="dropdown" />
 
     <Button
@@ -100,8 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/colorTextWhite"
         android:backgroundTint="@color/colorPrimary"
-        android:layout_margin="@dimen/default_margin_base"
-        tools:layout_editor_absoluteX="24dp" />
+        android:layout_margin="@dimen/default_margin_base" />
 
    <!-- <android.support.design.widget.TextInputEditText
         android:id="@+id/nameInputTextView"

@@ -112,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
         tv.setTypeface(tf);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(tv);
+
+
     }
 
     private Fragment getFragmentFor (int id)

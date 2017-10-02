@@ -37,6 +37,8 @@ public class NewWorkFragment extends Fragment {
     TextInputEditText nameTextInput;
     TextInputEditText descriptionTextInput;
     TextInputEditText prieceTextInput;
+    boolean hasError = false;
+
     public NewWorkFragment() {
         // Required empty public constructor
     }
@@ -74,14 +76,20 @@ public class NewWorkFragment extends Fragment {
                             Double.parseDouble(prieceTextInput.getText().toString()),
                             SessionVariables.CurrentidUser,
                             parseSelected((String) spinner.getSelectedItem()).getIdCategory());
-                    Toast.makeText(getContext(),"Freelo Creado",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),R.string.text_success_new_work,Toast.LENGTH_SHORT).show();
+                    hasError = false;
+
                 }
                 catch (Exception ex){
-                    Toast.makeText(getContext(),"Por Favor llena todos los campos",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),R.string.text_error_new_work,Toast.LENGTH_SHORT).show();
+                    hasError = true;
                 }
-                nameTextInput.setText("");
-                descriptionTextInput.setText("");
-                prieceTextInput.setText("");
+                if(!hasError)
+                {
+                    nameTextInput.setText("");
+                    descriptionTextInput.setText("");
+                    prieceTextInput.setText("");
+                }
 
 
             }
