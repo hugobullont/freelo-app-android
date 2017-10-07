@@ -39,6 +39,7 @@ public class NotificationsFragment extends Fragment implements TabLayout.OnTabSe
         NotificationsPagerAdapter pagerAdapter = new NotificationsPagerAdapter(getActivity().getSupportFragmentManager(),notificationsTabLayout.getTabCount());
 
         notificationsViewPager.setAdapter(pagerAdapter);
+        notificationsViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(notificationsTabLayout));
         notificationsTabLayout.addOnTabSelectedListener(this);
 
 
@@ -48,6 +49,7 @@ public class NotificationsFragment extends Fragment implements TabLayout.OnTabSe
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
+
         notificationsViewPager.setCurrentItem(tab.getPosition());
 
     }
