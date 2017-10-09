@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.sadboyz.freelo.R;
+import me.sadboyz.freelo.activities.MainActivity;
 import me.sadboyz.freelo.adapters.RewardsAdapter;
 import me.sadboyz.freelo.models.Reward;
 import me.sadboyz.freelo.repositories.RewardsRepository;

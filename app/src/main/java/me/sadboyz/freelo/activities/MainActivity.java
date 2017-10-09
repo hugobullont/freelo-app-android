@@ -6,13 +6,16 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -87,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
             BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
             navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-            this.setTitleView();
+            this.setTitleView(true,true);
             navigateAccordingTo(R.id.navigation_search);
         /*}*/
 
@@ -101,18 +104,40 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void setTitleView() {
+    public void setTitleView(boolean title, boolean credit) {
+
+        RelativeLayout ly = new RelativeLayout(getApplicationContext());
         TextView tv = new TextView(getApplicationContext());
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
+
+        tv.setGravity(Gravity.START);
         tv.setLayoutParams(lp);
-        tv.setText("Freelo");
+        tv.setText(getString(R.string.app_name));
         tv.setTextSize(20);
         tv.setTextColor(Color.parseColor("#FFFFFF"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
-        tv.setTypeface(tf);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(tv);
+        if(title)
+        {
+            Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+            tv.setTypeface(tf);
+        }
 
+        ly.addView(tv);
+
+
+        if(credit)
+        {
+            TextView cv = new TextView(getApplicationContext());
+            cv.setGravity(Gravity.END);
+            cv.setLayoutParams(lp);
+            cv.setText("S/ 100.00");
+            cv.setTextSize(20);
+            cv.setTextColor(Color.parseColor("#FFFFFF"));
+            ly.addView(cv);
+            Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+            cv.setTypeface(tf);
+        }
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(ly);
 
     }
 
@@ -121,14 +146,19 @@ public class MainActivity extends AppCompatActivity {
         switch (id)
         {
             case R.id.navigation_search:
+                this.setTitleView(true,true);
                 return new SearchFragment();
             case R.id.navigation_rewards:
+                this.setTitleView(true,true);
                 return new RewardsFragment();
             case R.id.navigation_new_work:
+                this.setTitleView(true,true);
                 return new NewWorkFragment();
             case R.id.navigation_notifications:
+                this.setTitleView(true,true);
                 return new NotificationsFragment();
             case R.id.navigation_profile:
+                this.setTitleView(true,true);
                 return new ProfileFragment();
                 //return new ProfileFragment();
         }
