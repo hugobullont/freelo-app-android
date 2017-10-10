@@ -1,5 +1,7 @@
 package me.sadboyz.freelo.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import me.sadboyz.freelo.R;
+import me.sadboyz.freelo.activities.WorkActivity;
 import me.sadboyz.freelo.models.Work;
 
 /**
@@ -40,9 +43,17 @@ public class SearchAdapter  extends RecyclerView.Adapter<SearchAdapter.ViewHolde
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Work work = getWorks().get(position);
         holder.nameTextView.setText(work.getName());
-        holder.pubPriceTextView.setText("S/ "+String.format("%.2f",work.getPubPrice()
-                )
-        );
+        holder.pubPriceTextView.setText("S/ "+String.format("%.2f",work.getPubPrice()));
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent intent = new Intent(context, WorkActivity.class);
+                intent.putExtras(work.toBundle());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -62,11 +73,13 @@ public class SearchAdapter  extends RecyclerView.Adapter<SearchAdapter.ViewHolde
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameTextView;
         TextView pubPriceTextView;
+        View view;
 
         public ViewHolder(View itemView) {
             super(itemView);
             nameTextView = (TextView) itemView.findViewById(R.id.nameSTextView);
             pubPriceTextView =(TextView)itemView.findViewById(R.id.pubPriceTextView);
+            view = itemView;
         }
     }
 }

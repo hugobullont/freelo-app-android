@@ -6,104 +6,136 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/default_margin">
+    android:layout_margin="@dimen/default_margin"
+    tools:context="me.sadboyz.freelo.activities.WorkActivity">
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
     <android.support.constraint.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
         >
         <TextView
             android:id="@+id/nameWorkTextView"
-            android:layout_width="352dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/sample_name_work"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="@dimen/title_cards_size"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/default_margin_base"
+            android:layout_marginTop="@dimen/default_margin_base"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"/>
+        <TextView
+            android:id="@+id/titleCategoryTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/work_category"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_margin="@dimen/default_margin"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/nameWorkTextView"/>
+        <TextView
+            android:id="@+id/categoryWorkTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sample_categoryId_work"
+            app:layout_constraintTop_toBottomOf="@id/titleCategoryTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/default_margin" />
 
-            />
+        <TextView
+            android:id="@+id/titleDescriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/work_description"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/default_margin"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/categoryWorkTextView"/>
 
         <TextView
             android:id="@+id/descriptionWorkTextView"
-            android:layout_width="352dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/sample_description_work"
-            app:layout_constraintTop_toBottomOf="@+id/nameWorkTextView"
+            app:layout_constraintTop_toBottomOf="@id/titleDescriptionTextView"
             app:layout_constraintStart_toStartOf="parent"
             android:textAlignment="inherit"
-            android:layout_margin="@dimen/default_margin"
+            android:layout_margin="@dimen/default_margin" />
 
-            />
+        <TextView
+            android:id="@+id/titlePriceTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/work_price"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/default_margin"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/descriptionWorkTextView"/>
 
         <TextView
             android:id="@+id/pubPriceWorkTextView"
-            android:layout_width="352dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sample_pubPrice_work"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionWorkTextView"
+            app:layout_constraintTop_toBottomOf="@id/titlePriceTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/default_margin" />
+
+        <TextView
+            android:id="@+id/titleDateTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/work_date"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_margin="@dimen/default_margin"
-
-           />
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/pubPriceWorkTextView"/>
 
         <TextView
             android:id="@+id/dateWorkTextView"
-            android:layout_width="352dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sample_date_work"
-            app:layout_constraintTop_toBottomOf="@id/pubPriceWorkTextView"
+            app:layout_constraintTop_toBottomOf="@id/titleDateTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/default_margin" />
+
+        <TextView
+            android:id="@+id/titleCreatedByTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/work_createdBy"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_margin="@dimen/default_margin"
-
-            />
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/dateWorkTextView"/>
 
         <TextView
             android:id="@+id/createdByWorkTextView"
-            android:layout_width="352dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sample_createdBy_work"
-            app:layout_constraintTop_toBottomOf="@+id/dateWorkTextView"
+            app:layout_constraintTop_toBottomOf="@id/titleCreatedByTextView"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="@dimen/default_margin"
+            android:layout_margin="@dimen/default_margin" />
 
-            />
-        <TextView
-            android:id="@+id/idCategoryWorkTextView"
-            android:layout_width="352dp"
-            android:layout_height="wrap_content"
-            android:text="@string/sample_categoryId_work"
-            app:layout_constraintTop_toBottomOf="@+id/createdByWorkTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="@dimen/default_margin"
-
-            />
-        <TextView
-            android:id="@+id/statusWorkTextView"
-            android:layout_width="352dp"
-            android:layout_height="wrap_content"
-            android:text="@string/sample_status_work"
-            app:layout_constraintTop_toBottomOf="@+id/idCategoryWorkTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="@dimen/default_margin"
-            />
         <Button
-            android:id="@+id/aplicarButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/applyButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_apply_work"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/statusWorkTextView"
+            app:layout_constraintTop_toBottomOf="@id/createdByWorkTextView"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/colorTextWhite"
             android:backgroundTint="@color/colorPrimary"
-            android:layout_margin="@dimen/default_margin"
-
-            />
+            android:layout_margin="@dimen/default_margin_base" />
 
     </android.support.constraint.ConstraintLayout>
 

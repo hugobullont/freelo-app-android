@@ -72,4 +72,13 @@ public class CategoriesRepository {
         }
         return category;
     }
+
+    public Category getCategoryById(String id)
+    {
+        Category category = new Category();
+        for (Category cat: categories) {
+            if(cat.getIdCategory().equals(id)) category = cat;
+        }
+        return category;
+    }
 }

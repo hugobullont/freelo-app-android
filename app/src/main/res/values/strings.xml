@@ -30,6 +30,12 @@
     <string name="sample_status_work">Sample Status</string>
     <string name="button_apply_work">Aplicar</string>
 
+    <string name="work_category">Categoría:</string>
+    <string name="work_description">Descripción:</string>
+    <string name="work_price">¿Cuánto ganarás?</string>
+    <string name="work_date">Freelo publicado el:</string>
+    <string name="work_createdBy">Freelo creado por:</string>
+
     <string name="title_name_new_work_fragment">Nombra tu Freelo</string>
     <string name="title_description_new_work_fragment">Describe tu Freelo</string>
     <string name="title_base_priece_new_work_fragment">¿Cuánto Invertiras?</string>
