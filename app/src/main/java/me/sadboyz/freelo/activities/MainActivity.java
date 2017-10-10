@@ -32,6 +32,8 @@ import me.sadboyz.freelo.fragments.NotificationsFragment;
 import me.sadboyz.freelo.fragments.ProfileFragment;
 import me.sadboyz.freelo.fragments.RewardsFragment;
 import me.sadboyz.freelo.fragments.SearchFragment;
+import me.sadboyz.freelo.global.SessionVariables;
+import me.sadboyz.freelo.repositories.ProfilesRepository;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -130,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
             cv.setGravity(Gravity.END);
             cv.setLayoutParams(lp);
             cv.setText("S/ 100.00");
+            //cv.setText("S/ " + ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).toString());
             cv.setTextSize(20);
             cv.setTextColor(Color.parseColor("#FFFFFF"));
             ly.addView(cv);
