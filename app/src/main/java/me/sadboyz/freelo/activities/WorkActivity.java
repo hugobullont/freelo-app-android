@@ -1,10 +1,14 @@
 package me.sadboyz.freelo.activities;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,6 +25,7 @@ public class WorkActivity extends AppCompatActivity {
     TextView pubPriceWorkTextView;
     TextView dateWorkTextView;
     TextView createdByTextView;
+    Button applyButton;
 
 
     @Override
@@ -53,6 +58,7 @@ public class WorkActivity extends AppCompatActivity {
         pubPriceWorkTextView = (TextView) findViewById(R.id.pubPriceWorkTextView);
         dateWorkTextView = (TextView) findViewById(R.id.dateWorkTextView);
         createdByTextView = (TextView) findViewById(R.id.createdByWorkTextView);
+        applyButton = (Button) findViewById(R.id.applyButton);
 
         nameWorkTextView.setText(work.getName());
         categoryWorkTextView.setText(CategoriesRepository.getInstance().getCategoryById(work.getIdCategory()).getName());
@@ -60,5 +66,29 @@ public class WorkActivity extends AppCompatActivity {
         pubPriceWorkTextView.setText("S/ " + String.format("%.2f",work.getPubPrice()));
         dateWorkTextView.setText(work.getDate());
         //createdByTextView.setText(ProfilesRepository.getInstance().GetProfileByUserId(work.getCreatedBy()).getName());
+
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showApplyAlert();
+            }
+        });
+    }
+
+    private void showApplyAlert()
+    {
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
+        builder.setTitle("Aplicar al Freelo");
+        builder.setMessage("Tu perfil será enviado al creador de este Freelo para comparar solicitudes.\n\n" +
+                "¡Te notificaremos si resultas seleccionado!");
+        builder.setPositiveButton("Aplicar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setNegativeButton("Cancelar", null);
+        builder.show();
     }
 }
