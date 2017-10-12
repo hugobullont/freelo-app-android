@@ -83,8 +83,13 @@ public class WorksRepository {
 
     public List<Work> getWorks() {
         List<Application> applications = ApplicationsRepository.getInstance().getApplicationsOfUser();
+        List<Work> worksNoApps = new ArrayList<>();
 
-        List<Work> worksNoApps = works;
+        for(Work work:works){
+            worksNoApps.add(work);
+        }
+
+
         for(Application application : applications) {
             for(Work work : worksNoApps){
                 if(application.getIdWork().equals(work.getIdWork())){
