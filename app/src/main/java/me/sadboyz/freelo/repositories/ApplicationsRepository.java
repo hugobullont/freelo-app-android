@@ -35,7 +35,7 @@ public class ApplicationsRepository {
     {
         String key = DataReference.getInstance().child("applications").push().getKey();
         String date = Calendar.getInstance().getTime().toString();
-        Application application = new Application(key,idWork,idUser,date,false);
+        Application application = new Application(key,idWork,idUser,date,"open");
         DataReference.getInstance().child("applications").child(key).setValue(application);
         return this;
     }
@@ -66,5 +66,35 @@ public class ApplicationsRepository {
     public List<Application> getApplicationsOfUser()
     {
         return applications;
+    }
+
+    public List<Application> getOpenApplications() {
+        List<Application> openApplications = new ArrayList<>();
+        for(Application app : applications){
+            if(app.getStatus().equals("open")){
+                openApplications.add(app);
+            }
+        }
+        return openApplications;
+    }
+
+    public List<Application> getSelectedApplications(){
+        List<Application> selectedApplications = new ArrayList<>();
+        for(Application app : applications){
+            if(app.getStatus().equals("selected")){
+                selectedApplications.add(app);
+            }
+        }
+        return selectedApplications;
+    }
+
+    public List<Application> getFinishApplications(){
+        List<Application> finishApplications = new ArrayList<>();
+        for(Application app : applications){
+            if(app.getStatus().equals("finish")){
+                finishApplications.add(app);
+            }
+        }
+        return finishApplications;
     }
 }

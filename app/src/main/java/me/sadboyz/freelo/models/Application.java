@@ -11,13 +11,13 @@ public class Application {
     private String idWork;
     private String idUser;
     private String date;
-    private boolean status;
+    private String status; //open - selected - notSelected - *only selected* finish
 
 
     public Application() {
     }
 
-    public Application(String idApplication, String idWork, String idUser, String date, boolean status) {
+    public Application(String idApplication, String idWork, String idUser, String date, String status) {
         this.setIdApplication(idApplication);
         this.setIdWork(idWork);
         this.setIdUser(idUser);
@@ -62,11 +62,11 @@ public class Application {
         return this;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public Application setStatus(boolean status) {
+    public Application setStatus(String status) {
         this.status = status;
         return this;
     }
@@ -78,7 +78,7 @@ public class Application {
         bundle.putString("idUser",idUser);
         bundle.putString("idWork",idWork);
         bundle.putString("date",date);
-        bundle.putBoolean("status",status);
+        bundle.putString("status",status);
         return bundle;
     }
 
@@ -87,7 +87,7 @@ public class Application {
         Application application = new Application();
         application.setIdUser(bundle.getString("idUser")).setIdApplication(bundle.getString("idApplication"))
                 .setIdWork(bundle.getString("idWork")).setDate(bundle.getString("date"))
-                .setStatus(bundle.getBoolean("status"));
+                .setStatus(bundle.getString("status"));
         return application;
     }
 }

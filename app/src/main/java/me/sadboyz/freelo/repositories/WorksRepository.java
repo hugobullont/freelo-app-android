@@ -26,6 +26,7 @@ import static android.content.ContentValues.TAG;
 public class WorksRepository {
     private static WorksRepository instance;
     private static List<Work> works;
+    private static List<Work> publishedWorks;
 
     public static WorksRepository getInstance()
     {
@@ -59,6 +60,9 @@ public class WorksRepository {
                     if(work.getStatus().equals("open") && !work.getCreatedBy().equals(SessionVariables.CurrentidUser)) {
                         works.add(work);
                     }
+                    if(work.getCreatedBy().equals(SessionVariables.CurrentidUser)){
+                        publishedWorks.add(work);
+                    }
                 }
             }
 
@@ -91,4 +95,8 @@ public class WorksRepository {
 
 
         return worksNoApps;}
+
+    public List<Work> getPublishedWorks(){
+        return publishedWorks;
+    }
 }
