@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import me.sadboyz.freelo.global.SessionVariables;
 import me.sadboyz.freelo.models.Application;
 import me.sadboyz.freelo.models.Work;
 
@@ -53,17 +54,10 @@ public class WorksRepository {
 
                 Iterable<DataSnapshot> iterable = dataSnapshot.child("works").getChildren();
                 works = new ArrayList<Work>();
-                List<Application> applications = ApplicationsRepository.getInstance().getApplicationsOfUser();
                 while(iterable.iterator().hasNext()){
                     Work work = iterable.iterator().next().getValue(Work.class);
-                    if(work.getStatus().equals("open")) {
+                    if(work.getStatus().equals("open") && !work.getCreatedBy().equals(SessionVariables.CurrentidUser)) {
                         works.add(work);
-                        /*for (Application application : applications) {
-                            if (work.getIdWork().equals(application.getIdWork())) continue;
-                            works.add(work);
-                        }*/
-
-
                     }
                 }
             }
@@ -74,6 +68,27 @@ public class WorksRepository {
             }
         });
     }
+    public Work getWorkById(String workId){
+        for (Work work:works) {
+            if(work.getIdWork().equals(workId))
+                return work;
+        }
+        return null;
+    }
 
-    public List<Work> getWorks() {return works;}
+
+    public List<Work> getWorks() {
+        List<Application> applications = ApplicationsRepository.getInstance().getApplicationsOfUser();
+
+        List<Work> worksNoApps = works;
+        for(Application application : applications) {
+            for(Work work : worksNoApps){
+                if(application.getIdWork().equals(work.getIdWork())){
+                    worksNoApps.remove(work); break;
+                }
+            }
+        }
+
+
+        return worksNoApps;}
 }

@@ -13,7 +13,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import me.sadboyz.freelo.R;
+import me.sadboyz.freelo.global.SessionVariables;
 import me.sadboyz.freelo.models.Work;
+import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.CategoriesRepository;
 import me.sadboyz.freelo.repositories.ProfilesRepository;
 
@@ -25,14 +27,18 @@ public class WorkActivity extends AppCompatActivity {
     TextView pubPriceWorkTextView;
     TextView dateWorkTextView;
     TextView createdByTextView;
+    TextView applyTextView;
     Button applyButton;
+    Work work;
+
+    boolean apply = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_work);
-        Work work = Work.from(getIntent().getExtras());
+        work = Work.from(getIntent().getExtras());
         loadInfoWork(work);
         this.setTitleView();
     }
@@ -59,6 +65,7 @@ public class WorkActivity extends AppCompatActivity {
         dateWorkTextView = (TextView) findViewById(R.id.dateWorkTextView);
         createdByTextView = (TextView) findViewById(R.id.createdByWorkTextView);
         applyButton = (Button) findViewById(R.id.applyButton);
+        applyTextView = (TextView) findViewById(R.id.applyTextView);
 
         nameWorkTextView.setText(work.getName());
         categoryWorkTextView.setText(CategoriesRepository.getInstance().getCategoryById(work.getIdCategory()).getName());
@@ -73,6 +80,11 @@ public class WorkActivity extends AppCompatActivity {
                 showApplyAlert();
             }
         });
+
+        if(apply){
+            applyButton.setVisibility(View.INVISIBLE);
+            applyTextView.setVisibility(View.VISIBLE);
+        }
     }
 
     private void showApplyAlert()
@@ -80,12 +92,14 @@ public class WorkActivity extends AppCompatActivity {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
         builder.setTitle("Aplicar al Freelo");
-        builder.setMessage("Tu perfil será enviado al creador de este Freelo para comparar solicitudes.\n\n" +
+        builder.setMessage("Tu perfil será enviado al creador de este Freelo para que pueda comparar solicitudes.\n\n" +
                 "¡Te notificaremos si resultas seleccionado!");
         builder.setPositiveButton("Aplicar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                ApplicationsRepository.getInstance().AddApplicationToDatabase(SessionVariables.CurrentidUser,work.getIdWork());
+                apply = true;
+                loadInfoWork(work);
             }
         });
         builder.setNegativeButton("Cancelar", null);

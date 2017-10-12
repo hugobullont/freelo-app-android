@@ -35,6 +35,7 @@
     <string name="work_price">¿Cuánto ganarás?</string>
     <string name="work_date">Freelo publicado el:</string>
     <string name="work_createdBy">Freelo creado por:</string>
+    <string name="work_already">Ya aplicaste a este Freelo. Búscalo en Seguidos.</string>
 
     <string name="title_name_new_work_fragment">Nombra tu Freelo</string>
     <string name="title_description_new_work_fragment">Describe tu Freelo</string>

@@ -50,4 +50,12 @@ public class SearchFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        works = WorksRepository.getInstance().getWorks();
+        searchAdapter = new SearchAdapter(works);
+        searchRecyclerView.setAdapter(searchAdapter);
+
+    }
 }

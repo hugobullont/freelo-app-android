@@ -5,5 +5,5 @@ package me.sadboyz.freelo.global;
  */
 
 public class SessionVariables {
-    public static String CurrentidUser = "null";
+    public static String CurrentidUser = "testUser";
 }
