@@ -50,14 +50,7 @@ public class FollowingFreelosFragment extends Fragment {
                 followingAdapter.setApplications(applications);
                 followingRecyclerView.setAdapter(followingAdapter);
                 followingSwipeRefreshLayout.setRefreshing(false);
-                if(applications.isEmpty()){
-                    followingAlertCardView.setVisibility(View.VISIBLE);
-                    followingSwipeRefreshLayout.setVisibility(View.INVISIBLE);
-                }
-                else{
-                    followingAlertCardView.setVisibility(View.INVISIBLE);
-                    followingSwipeRefreshLayout.setVisibility(View.VISIBLE);
-                }
+                validateApplications();
             }
         });
 
@@ -67,6 +60,12 @@ public class FollowingFreelosFragment extends Fragment {
         followingAdapter = new FollowingAdapter(applications);
         followingRecyclerView.setAdapter(followingAdapter);
 
+        validateApplications();
+        return view;
+    }
+
+    private void validateApplications(){
+
         if(applications.isEmpty()){
             followingAlertCardView.setVisibility(View.VISIBLE);
             followingSwipeRefreshLayout.setVisibility(View.INVISIBLE);
@@ -75,7 +74,15 @@ public class FollowingFreelosFragment extends Fragment {
             followingAlertCardView.setVisibility(View.INVISIBLE);
             followingSwipeRefreshLayout.setVisibility(View.VISIBLE);
         }
-        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        applications = ApplicationsRepository.getInstance().getOpenApplications();
+        followingAdapter.setApplications(applications);
+        followingRecyclerView.setAdapter(followingAdapter);
+        validateApplications();
     }
 
 }

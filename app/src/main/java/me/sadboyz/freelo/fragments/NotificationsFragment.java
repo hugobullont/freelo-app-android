@@ -49,9 +49,10 @@ public class NotificationsFragment extends Fragment implements TabLayout.OnTabSe
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-
         notificationsViewPager.setCurrentItem(tab.getPosition());
-
+        NotificationsPagerAdapter adapter = (NotificationsPagerAdapter)notificationsViewPager.getAdapter();
+        Fragment frag = adapter.getItem(notificationsViewPager.getCurrentItem());
+        frag.onResume();
     }
 
     @Override

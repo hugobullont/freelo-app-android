@@ -15,6 +15,9 @@ import me.sadboyz.freelo.fragments.YourFreelosFragment;
 public class NotificationsPagerAdapter extends FragmentStatePagerAdapter {
 
     int tabCount;
+    YourFreelosFragment tabYour;
+    FollowingFreelosFragment tabFoll;
+    PublishedFreelosFragment tabPub;
 
     public NotificationsPagerAdapter(FragmentManager fragmentManager, int tabCount){
         super(fragmentManager);
@@ -25,13 +28,16 @@ public class NotificationsPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch(position){
             case 0:
-                YourFreelosFragment tabYour = new YourFreelosFragment();
+                if(tabYour != null) return tabYour;
+                 tabYour = new YourFreelosFragment();
                 return tabYour;
             case 1:
-                FollowingFreelosFragment tabFoll = new FollowingFreelosFragment();
+                if(tabFoll != null) return tabFoll;
+                tabFoll = new FollowingFreelosFragment();
                 return tabFoll;
             case 2:
-                PublishedFreelosFragment tabPub = new PublishedFreelosFragment();
+                if(tabPub!=null)return tabPub;
+                tabPub = new PublishedFreelosFragment();
                 return tabPub;
             default:
                 return null;

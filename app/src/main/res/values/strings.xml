@@ -48,6 +48,9 @@
     <string name="following_alert">¡No hay Freelos!</string>
     <string name="following_alert_description">Busca nuevos Freelos a los que postular en Buscar Freelos</string>
 
+    <string name="your_freelos_alert">¡No hay Freelos!</string>
+    <string name="your_freelos_alert_description">No tienes Freelos en los que trabajar. ¡Salgamos a correr unos minutos!</string>
+
     <string name="cancel_login">Se canceló la operación</string>
     <string name="error_login">Ocurrió un error al ingresar</string>
     <string name="logout">Logout</string>
