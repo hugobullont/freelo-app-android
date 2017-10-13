@@ -45,6 +45,9 @@
     <string name="text_error_new_work">Por favor, llena todos los campos</string>
     <string name="text_success_new_work">Freelo Creado</string>
 
+    <string name="following_alert">¡No hay Freelos!</string>
+    <string name="following_alert_description">Busca nuevos Freelos a los que postular en Buscar Freelos</string>
+
     <string name="cancel_login">Se canceló la operación</string>
     <string name="error_login">Ocurrió un error al ingresar</string>
     <string name="logout">Logout</string>

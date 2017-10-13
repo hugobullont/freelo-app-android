@@ -4,6 +4,7 @@ package me.sadboyz.freelo.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ public class FollowingFreelosFragment extends Fragment {
     RecyclerView.LayoutManager followingLayoutManager;
     List<Application> applications;
     SwipeRefreshLayout followingSwipeRefreshLayout;
+    CardView followingAlertCardView;
 
     public FollowingFreelosFragment() {
         // Required empty public constructor
@@ -39,6 +41,7 @@ public class FollowingFreelosFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_following_freelos, container, false);
         followingRecyclerView = (RecyclerView)view.findViewById(R.id.followingRecyclerView);
+        followingAlertCardView = (CardView)view.findViewById(R.id.followingAlertCardView);
         followingSwipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.followingSwipeRefreshLayout);
         followingSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -47,6 +50,14 @@ public class FollowingFreelosFragment extends Fragment {
                 followingAdapter.setApplications(applications);
                 followingRecyclerView.setAdapter(followingAdapter);
                 followingSwipeRefreshLayout.setRefreshing(false);
+                if(applications.isEmpty()){
+                    followingAlertCardView.setVisibility(View.VISIBLE);
+                    followingSwipeRefreshLayout.setVisibility(View.INVISIBLE);
+                }
+                else{
+                    followingAlertCardView.setVisibility(View.INVISIBLE);
+                    followingSwipeRefreshLayout.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -55,6 +66,15 @@ public class FollowingFreelosFragment extends Fragment {
         applications = ApplicationsRepository.getInstance().getOpenApplications();
         followingAdapter = new FollowingAdapter(applications);
         followingRecyclerView.setAdapter(followingAdapter);
+
+        if(applications.isEmpty()){
+            followingAlertCardView.setVisibility(View.VISIBLE);
+            followingSwipeRefreshLayout.setVisibility(View.INVISIBLE);
+        }
+        else{
+            followingAlertCardView.setVisibility(View.INVISIBLE);
+            followingSwipeRefreshLayout.setVisibility(View.VISIBLE);
+        }
         return view;
     }
 
