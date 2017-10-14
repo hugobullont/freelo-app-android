@@ -97,4 +97,14 @@ public class ApplicationsRepository {
         }
         return finishApplications;
     }
+
+    public List<Application> getApplicationsByWorkId(String workId){
+        List<Application> workApplications = new ArrayList<>();
+        for(Application app : applications){
+            if(app.getIdWork().equals(workId)){
+                workApplications.add(app);
+            }
+        }
+        return workApplications;
+    }
 }

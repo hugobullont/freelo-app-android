@@ -51,6 +51,9 @@
     <string name="your_freelos_alert">¡No hay Freelos!</string>
     <string name="your_freelos_alert_description">No tienes Freelos en los que trabajar. ¡Salgamos a correr unos minutos!</string>
 
+    <string name="published_alert">¡No hay Freelos!</string>
+    <string name="published_alert_description">No tienes Freelos publicados. ¡Utilizando Freelo puedes encontrar ayuda para ese proyecto en el que estás pensando!</string>
+
     <string name="cancel_login">Se canceló la operación</string>
     <string name="error_login">Ocurrió un error al ingresar</string>
     <string name="logout">Logout</string>
