@@ -65,7 +65,9 @@
             android:text="@string/sample_description_work"
             app:layout_constraintTop_toBottomOf="@id/titleDescriptionTextView"
             app:layout_constraintStart_toStartOf="parent"
-            android:textAlignment="inherit"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="left"
+            android:textAlignment="gravity"
             android:layout_margin="@dimen/default_margin" />
 
         <TextView
