@@ -55,6 +55,7 @@ public class WorksRepository {
 
                 Iterable<DataSnapshot> iterable = dataSnapshot.child("works").getChildren();
                 works = new ArrayList<Work>();
+                publishedWorks = new ArrayList<Work>();
                 while(iterable.iterator().hasNext()){
                     Work work = iterable.iterator().next().getValue(Work.class);
                     if(work.getStatus().equals("open") && !work.getCreatedBy().equals(SessionVariables.CurrentidUser)) {
