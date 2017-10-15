@@ -7,4 +7,5 @@
     <color name="colorTextWhite">#FFFFFF</color>
     <color name="colorPrimaryLight">#B5C8DF</color>
     <color name="translucent">#80000000</color>
+    <color name="silver">#d3d3d3</color>
 </resources>

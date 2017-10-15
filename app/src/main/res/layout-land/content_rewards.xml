@@ -5,136 +5,185 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="me.sadboyz.freelo.activities.MainActivity">
-
+    tools:context="me.sadboyz.freelo.activities.RewardsActivity">
 
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-            <FrameLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/mainlayout"
-                android:layout_width="fill_parent"
+                android:layout_width="368dp"
                 android:layout_height="wrap_content"
                 android:foregroundGravity="bottom"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:layout_editor_absoluteX="0dp">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
 
                 <pl.droidsonroids.gif.GifImageButton
                     android:id="@+id/rewardsPictureView"
-                    android:layout_width="570dp"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/loadinggif"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@mipmap/loadinggif"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_margin="@dimen/default_margin"
-                    tools:layout_editor_absoluteX="0dp" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-                <LinearLayout
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/rewardsNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin_base"
+                android:text="@string/sample_name"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/title_cards_content_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mainlayout"
+                />
+
+
+            <LinearLayout
+                android:id="@+id/LL_Seperator"
+                android:layout_width="500dp"
+                android:layout_height="1dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/imgBut_Settings"
+                android:background="@color/silver"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/rewardsNameTextView">
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/rewardsDescriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:text="@string/sample_description"
+                android:textAlignment="inherit"
+                android:textSize="@dimen/text_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rewardsNameTextView" />
+
+
+
+            <LinearLayout
+                android:id="@+id/Seperator2"
+                android:layout_width="500dp"
+                android:layout_height="1dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/imgBut_Settings"
+                android:background="@color/silver"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/rewardsDescriptionTextView">
+            </LinearLayout>
+        <!--<android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/mainlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="bottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <pl.droidsonroids.gif.GifImageButton
+                    android:id="@+id/rewardsPictureView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/loadinggif"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+               <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:background="@color/translucent">
 
                     <TextView
                         android:id="@+id/rewardsNameTextView"
-                        android:layout_width="400dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/default_margin_base"
                         android:text="@string/sample_name"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/colorTextWhite"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/title_cards_size" />
-
-                </LinearLayout>
-            </FrameLayout>
-
-            <!--
-                   <FrameLayout
-                       android:id="@+id/textlayout"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       app:layout_constraintTop_toBottomOf="@+id/mainlayout"
-                       android:layout_margin="@dimen/text_margin">
-                       <LinearLayout
-                           android:layout_width="match_parent"
-                           android:layout_height="match_parent">
-                           <WebView
-                               android:id="@+id/rewardsDescriptionTextView"
-                               android:layout_width="fill_parent"
-                               android:layout_height="fill_parent">
-
-
-                           </WebView>
-                       </LinearLayout>
-                   </FrameLayout>
-
-
-         -->
-                   <TextView
-                       android:id="@+id/rewardsDescriptionTextView"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="@string/sample_description"
-                       android:textAlignment="inherit"
-                       app:layout_constraintTop_toBottomOf="@+id/mainlayout"
-                       app:layout_constraintStart_toStartOf="parent"
-                       android:textSize="@dimen/text_margin"
-                       android:layout_margin="@dimen/default_margin"
-                       tools:layout_editor_absoluteX="8dp" />
+                        android:textSize="@dimen/title_cards_content_size" />
 
 
                     <TextView
-                        android:id="@+id/rewardsPriceTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sample_priece"
-                        app:layout_constraintTop_toBottomOf="@+id/rewardsDescriptionTextView"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:textSize="@dimen/text_margin"
-                        android:layout_margin="@dimen/default_margin"
-                        tools:layout_editor_absoluteX="8dp" />
-                    <TextView
-                        android:id="@+id/rewardsQuantityTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sample_quantity"
-                        app:layout_constraintTop_toBottomOf="@+id/rewardsPriceTextView"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:textSize="@dimen/text_margin"
-                        android:layout_margin="@dimen/default_margin"
-                        tools:layout_editor_absoluteX="8dp" />
-
-                    <Button
-                        android:id="@+id/buttonR"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/button_add"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rewardsQuantityTextView"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:textColor="@color/colorTextWhite"
-                        android:backgroundTint="@color/colorPrimary"
-                        android:layout_margin="@dimen/default_margin"
-                        android:drawableLeft="@drawable/ic_star_white_24dp"
-                        tools:layout_editor_absoluteX="272dp" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </ScrollView>
+                         android:id="@+id/rewardsPriceTextView"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="@dimen/default_margin_base"
+                         android:text="@string/sample_priece"
+                         android:textAppearance="?android:attr/textAppearanceLarge"
+                         android:textColor="@color/colorTextWhite"
+                         android:textIsSelectable="true"
+                         android:textSize="@dimen/title_cards_content_size" />  -->
+    <!--
+                    </LinearLayout>
+                </FrameLayout>
 
 
+                        <FrameLayout
+                            android:id="@+id/textlayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@+id/mainlayout"
+                            android:layout_margin="@dimen/text_margin">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <WebView
+                                    android:id="@+id/rewardsDescriptionTextView"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
+
+
+                                </WebView>
+                            </LinearLayout>
+                        </FrameLayout>
+
+
+
+
+            <TextView
+                android:id="@+id/rewardsDescriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:text="@string/sample_description"
+                android:textAlignment="inherit"
+                android:textSize="@dimen/text_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mainlayout" />
+
+
+
+       </android.support.constraint.ConstraintLayout>-->
 
         </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
