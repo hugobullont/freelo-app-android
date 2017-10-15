@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 this.setTitleView(true,true);
                 return new NotificationsFragment();
             case R.id.navigation_profile:
-                this.setTitleView(true,true);
+                this.setTitleView(true,false);
                 return new ProfileFragment();
                 //return new ProfileFragment();
         }

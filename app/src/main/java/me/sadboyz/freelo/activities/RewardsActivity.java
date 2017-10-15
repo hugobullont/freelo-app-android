@@ -12,6 +12,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,22 +50,47 @@ public class RewardsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rewards);
         Reward reward = Reward.from(getIntent().getExtras());
         loadInfoRewards(reward);
-        this.setTitleView();
+        this.setTitleView(true,true);
 
 
     }
 
-    private void setTitleView() {
+    public void setTitleView(boolean title, boolean credit) {
+
+        RelativeLayout ly = new RelativeLayout(getApplicationContext());
         TextView tv = new TextView(getApplicationContext());
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
+
+        tv.setGravity(Gravity.START);
         tv.setLayoutParams(lp);
-        tv.setText("Freelo");
+        tv.setText(getString(R.string.app_name));
         tv.setTextSize(20);
         tv.setTextColor(Color.parseColor("#FFFFFF"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
-        tv.setTypeface(tf);
+        if(title)
+        {
+            Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+            tv.setTypeface(tf);
+        }
+
+        ly.addView(tv);
+
+
+        if(credit)
+        {
+            TextView cv = new TextView(getApplicationContext());
+            cv.setGravity(Gravity.END);
+            cv.setLayoutParams(lp);
+            cv.setText("S/ 100.00");
+            //cv.setText("S/ " + ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).toString());
+            cv.setTextSize(20);
+            cv.setTextColor(Color.parseColor("#FFFFFF"));
+            ly.addView(cv);
+            Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+            cv.setTypeface(tf);
+        }
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(tv);
+        getSupportActionBar().setCustomView(ly);
+
     }
 
     private void loadInfoRewards(final Reward reward) {

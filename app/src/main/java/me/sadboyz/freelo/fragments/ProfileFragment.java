@@ -17,10 +17,7 @@ import me.sadboyz.freelo.repositories.ProfilesRepository;
  */
 public class ProfileFragment extends Fragment {
 
-    Button saveprofileButton;
-    TextInputEditText nameprofileTextEditText;
-    TextInputEditText lastnameprofileTextInputEditText;
-    TextInputEditText emailprofileTextInputEditText;
+
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -33,18 +30,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        /*nameprofileTextEditText = (TextInputEditText) view.findViewById(R.id.nameInputTextView);
-        lastnameprofileTextInputEditText = (TextInputEditText) view.findViewById(R.id.lastnameProfileInputTextView);
-        emailprofileTextInputEditText = (TextInputEditText) view.findViewById(R.id.emailProfileInputTextView);
-        saveprofileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ProfilesRepository pr = new ProfilesRepository();
 
-            }
-        });
-
-        */
         return view;
     }
 

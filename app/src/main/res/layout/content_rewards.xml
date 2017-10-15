@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
     tools:context="me.sadboyz.freelo.activities.RewardsActivity">
 
 
@@ -18,7 +19,7 @@
 
             <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/mainlayout"
-                android:layout_width="368dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:foregroundGravity="bottom"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,8 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
                 android:text="@string/sample_name"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textIsSelectable="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
                 android:textSize="@dimen/title_cards_content_size"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mainlayout"
@@ -56,10 +57,8 @@
 
             <LinearLayout
                 android:id="@+id/LL_Seperator"
-                android:layout_width="500dp"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginRight="5dp"
-                android:layout_toLeftOf="@+id/imgBut_Settings"
                 android:background="@color/silver"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/rewardsNameTextView">
@@ -67,23 +66,23 @@
 
             <TextView
                 android:id="@+id/rewardsDescriptionTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
                 android:text="@string/sample_description"
-                android:textAlignment="inherit"
+                android:gravity="left"
+                android:textAlignment="gravity"
                 android:textSize="@dimen/text_margin"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rewardsNameTextView" />
 
 
 
             <LinearLayout
                 android:id="@+id/Seperator2"
-                android:layout_width="500dp"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginRight="5dp"
-                android:layout_toLeftOf="@+id/imgBut_Settings"
                 android:background="@color/silver"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/rewardsDescriptionTextView">
@@ -195,11 +194,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_add"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center"
-            android:textSize="@dimen/text_dimen"
             android:textColor="@color/colorTextWhite"
             android:backgroundTint="@color/colorPrimary"/>
     </android.support.constraint.ConstraintLayout>

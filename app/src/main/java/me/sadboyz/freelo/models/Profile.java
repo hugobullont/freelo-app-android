@@ -163,4 +163,8 @@ public class Profile {
                 .setCredit(bundle.getDouble("credit")).setIdUser(bundle.getString("idUser"));
         return profile;
     }
+
+    public String getCompleteName(){
+        return name + " " + lastName;
+    }
 }
