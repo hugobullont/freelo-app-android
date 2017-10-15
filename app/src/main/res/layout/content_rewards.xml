@@ -9,8 +9,8 @@
 
 
     <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_width="match_parent"
+        android:layout_height="460dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -185,5 +185,23 @@
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/buttonR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:textSize="@dimen/text_dimen"
+            android:textColor="@color/colorTextWhite"
+            android:backgroundTint="@color/colorPrimary"/>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
