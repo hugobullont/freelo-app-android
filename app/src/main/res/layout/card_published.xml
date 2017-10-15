@@ -12,14 +12,14 @@
             android:id="@+id/infoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="info"
+            android:text="@string/button_text"
             android:textAllCaps="true"
-            android:layout_margin="@dimen/default_margin"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:textColor="@color/colorTextWhite"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:backgroundTint="@android:color/transparent"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"/>
         <android.support.constraint.ConstraintLayout
             android:layout_width="220dp"
             android:layout_height="wrap_content"

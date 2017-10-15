@@ -90,9 +90,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mainlayout"
             app:layout_constraintStart_toStartOf="parent"
-            android:textColor="@color/colorTextWhite"
-            android:backgroundTint="@color/colorPrimary"
-            android:layout_margin="@dimen/default_margin_base" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:backgroundTint="@android:color/transparent"
+            style="@style/Base.Widget.AppCompat.Button.Borderless" />
 
         <!--<Button
             android:id="@+id/buttonR"
