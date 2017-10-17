@@ -11,5 +11,6 @@
     <dimen name="title_cards_size">25sp</dimen>
     <dimen name="title_cards_content_size">20sp</dimen>
     <dimen name="text_dimen">20dp</dimen>
+    <dimen name="card_corner">2dp</dimen>
 
 </resources>
