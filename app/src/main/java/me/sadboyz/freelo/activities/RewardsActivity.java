@@ -28,6 +28,7 @@ import me.sadboyz.freelo.global.SessionVariables;
 import me.sadboyz.freelo.models.Reward;
 import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.ImagesRepository;
+import me.sadboyz.freelo.repositories.ProfilesRepository;
 
 /**
  * Created by Leonel on 26/09/2017.
@@ -80,7 +81,8 @@ public class RewardsActivity extends AppCompatActivity {
             TextView cv = new TextView(getApplicationContext());
             cv.setGravity(Gravity.END);
             cv.setLayoutParams(lp);
-            cv.setText("S/ 100.00");
+            Double cred = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).getCredit();
+            cv.setText("S/ " + String.format("%.2f",cred));
             //cv.setText("S/ " + ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).toString());
             cv.setTextSize(20);
             cv.setTextColor(Color.parseColor("#FFFFFF"));

@@ -36,6 +36,7 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:10.2.6'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
     testCompile 'junit:junit:4.12'
 }
 

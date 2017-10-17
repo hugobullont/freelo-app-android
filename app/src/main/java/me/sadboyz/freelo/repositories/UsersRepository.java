@@ -28,6 +28,10 @@ public class UsersRepository {
         return instance;
     }
 
+    public static UsersRepository getInstance(){
+        if(instance != null) return instance;
+        return null;
+    }
 
 
     public UsersRepository AddUserToDatabase(String idFacebook)
@@ -76,5 +80,10 @@ public class UsersRepository {
         this.currentUser = currentUser;
         SessionVariables.CurrentidUser =  currentUser.getIdUser();
         return this;
+    }
+
+    public String profileImageUrl(){
+        String url = "https://graph.facebook.com/" + getIdFacebook() + "/picture?type=large";
+        return url;
     }
 }

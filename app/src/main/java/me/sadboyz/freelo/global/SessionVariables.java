@@ -6,4 +6,5 @@ package me.sadboyz.freelo.global;
 
 public class SessionVariables {
     public static String CurrentidUser = "testUser";
+    public static String FacebookId = "1049873460";
 }

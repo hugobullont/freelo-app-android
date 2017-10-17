@@ -131,8 +131,9 @@ public class MainActivity extends AppCompatActivity {
             TextView cv = new TextView(getApplicationContext());
             cv.setGravity(Gravity.END);
             cv.setLayoutParams(lp);
-            cv.setText("S/ 100.00");
-            //cv.setText("S/ " + ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).toString());
+            //cv.setText("S/ 100.00");
+            Double cred = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).getCredit();
+            cv.setText("S/ " + String.format("%.2f",cred));
             cv.setTextSize(20);
             cv.setTextColor(Color.parseColor("#FFFFFF"));
             ly.addView(cv);

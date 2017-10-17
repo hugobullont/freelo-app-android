@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import me.sadboyz.freelo.R;
+import me.sadboyz.freelo.global.SessionVariables;
 import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.CategoriesRepository;
 import me.sadboyz.freelo.repositories.ExchangesRepository;
