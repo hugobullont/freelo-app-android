@@ -10,7 +10,7 @@ public class Transaction {
     private String idTransaction;
     private String idUser;
     private Double amount;
-    private String mode;
+    private String mode; //newWork - exchange - deposit - withdraw
     private String idObject;
     private String date;
     private String transactionCode;

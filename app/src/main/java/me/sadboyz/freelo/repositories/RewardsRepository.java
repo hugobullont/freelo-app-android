@@ -89,4 +89,12 @@ public class RewardsRepository {
         return rewards;
     }
 
+    public Reward getRewardById(String idReward){
+        for (Reward reward: rewards) {
+            if(reward.getIdReward().equals(idReward)) return reward;
+        }
+
+        return null;
+    }
+
 }

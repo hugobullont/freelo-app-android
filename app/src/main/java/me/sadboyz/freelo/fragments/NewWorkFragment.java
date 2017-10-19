@@ -71,13 +71,13 @@ public class NewWorkFragment extends Fragment {
             public void onClick(View view) {
                 WorksRepository wr = new WorksRepository();
                 try {
-                    wr.AddWorkToDatabase(nameTextInput.getText().toString(),
-                            descriptionTextInput.getText().toString(), 0.9 * Double.parseDouble(prieceTextInput.getText().toString()),
+                    boolean work = wr.AddWorkToDatabase(nameTextInput.getText().toString(),
+                            descriptionTextInput.getText().toString(),
                             Double.parseDouble(prieceTextInput.getText().toString()),
-                            SessionVariables.CurrentidUser,
                             parseSelected((String) spinner.getSelectedItem()).getIdCategory());
-                    Toast.makeText(getContext(),R.string.text_success_new_work,Toast.LENGTH_SHORT).show();
-                    hasError = false;
+                    if(work){Toast.makeText(getContext(),R.string.text_success_new_work,Toast.LENGTH_SHORT).show(); hasError = false;}
+                    else{Toast.makeText(getContext(),R.string.text_no_credit_new_work,Toast.LENGTH_SHORT).show(); hasError = true;}
+
 
                 }
                 catch (Exception ex){

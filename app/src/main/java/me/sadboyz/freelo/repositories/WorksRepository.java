@@ -15,6 +15,7 @@ import java.util.List;
 
 import me.sadboyz.freelo.global.SessionVariables;
 import me.sadboyz.freelo.models.Application;
+import me.sadboyz.freelo.models.Profile;
 import me.sadboyz.freelo.models.Work;
 
 import static android.content.ContentValues.TAG;
@@ -36,13 +37,29 @@ public class WorksRepository {
         return instance;
     }
 
-    public WorksRepository AddWorkToDatabase(String name, String description, Double basePrice, Double pubPrice, String createdBy, String idCategory)
+    public boolean AddWorkToDatabase(String name, String description, Double basePrice, String idCategory)
     {
+        Double pubPrice = basePrice * 0.85;
+
         String key = DataReference.getInstance().child("works").push().getKey();
         String date = Calendar.getInstance().getTime().toString();
-        Work work = new Work(key,name,description,basePrice,pubPrice,date,createdBy,"null",idCategory,"open");
+        if(!ValidatePost(basePrice)) return false;
+        Work work = new Work(key,name,description,basePrice,pubPrice,date,SessionVariables.CurrentidUser,"null",idCategory,"open");
+        TransactionsRepository.getInstance().AddTransactionToDatabase(SessionVariables.CurrentidUser,basePrice,"newWork",key);
         DataReference.getInstance().child("works").child(key).setValue(work);
-        return this;
+        return true;
+    }
+
+    private boolean ValidatePost(Double basePrice){
+        Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser);
+
+        if(profile.getCredit() - basePrice < 0){
+            return false;
+        }
+        Double credit = profile.getCredit() - basePrice;
+        profile.setCredit(credit);
+        ProfilesRepository.getInstance().UpdateProfile(profile);
+        return true;
     }
 
     public void EventLoad()

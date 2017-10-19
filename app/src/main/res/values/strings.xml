@@ -44,6 +44,7 @@
     <string name="button_create">CREAR</string>
     <string name="text_error_new_work">Por favor, llena todos los campos</string>
     <string name="text_success_new_work">Freelo Creado</string>
+    <string name="text_no_credit_new_work">No tienes crédito suficiente para crear este Freelo</string>
 
     <string name="following_alert">¡No hay Freelos!</string>
     <string name="following_alert_description">Busca nuevos Freelos a los que postular en Buscar Freelos</string>
@@ -63,5 +64,8 @@
     <string name="Mi_perfil">Mi perfil</string>
 
     <string name="facebook_app_id">1528762440479387</string>
+
+    <string name="title_information_card">Información</string>
+    <string name="credit">Crédito:</string>
 
 </resources>

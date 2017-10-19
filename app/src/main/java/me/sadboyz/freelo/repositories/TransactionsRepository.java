@@ -36,7 +36,7 @@ public class TransactionsRepository {
     {
         String key = DataReference.getInstance().child("transactions").push().getKey();
         String date = Calendar.getInstance().getTime().toString();
-        Transaction transaction = new Transaction(key,idUser,amount,mode,idObject,"null",date);
+        Transaction transaction = new Transaction(key,idUser,amount,mode,idObject,mode+key,date);
         DataReference.getInstance().child("transactions").child(key).setValue(transaction);
         return this;
     }

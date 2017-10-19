@@ -12,6 +12,8 @@ import java.util.List;
 
 import me.sadboyz.freelo.global.SessionVariables;
 import me.sadboyz.freelo.models.Exchange;
+import me.sadboyz.freelo.models.Profile;
+import me.sadboyz.freelo.models.Reward;
 
 import static android.content.ContentValues.TAG;
 
@@ -31,12 +33,29 @@ public class ExchangesRepository {
         return instance;
     }
 
-    public ExchangesRepository AddExchangeToDatabase(String idUser, String idReward){
+    public boolean AddExchangeToDatabase(String idUser, String idReward){
         String key = DataReference.getInstance().child("exchanges").push().getKey();
         String date = Calendar.getInstance().getTime().toString();
+
+        Reward reward = RewardsRepository.getInstance().getRewardById(idReward);
+
+        if(!ValidatePost(reward)) return false;
         Exchange exchange = new Exchange(key,idUser,idReward,date,false);
+        TransactionsRepository.getInstance().AddTransactionToDatabase(SessionVariables.CurrentidUser,reward.getPrice(),"exchange",key);
         DataReference.getInstance().child("exchanges").child(key).setValue(exchange);
-        return this;
+        return true;
+    }
+
+    private boolean ValidatePost(Reward reward){
+        Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser);
+
+        if(profile.getCredit() - reward.getPrice() < 0){
+            return false;
+        }
+        Double credit = profile.getCredit() - reward.getPrice();
+        profile.setCredit(credit);
+        ProfilesRepository.getInstance().UpdateProfile(profile);
+        return true;
     }
 
     public void EventLoad()

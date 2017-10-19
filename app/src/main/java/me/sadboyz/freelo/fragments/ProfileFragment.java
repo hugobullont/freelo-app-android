@@ -26,6 +26,7 @@ public class ProfileFragment extends Fragment {
 
     CircleImageView profileImage;
     TextView fullNameTextView;
+    TextView creditTextView;
 
 
     public ProfileFragment() {
@@ -41,11 +42,12 @@ public class ProfileFragment extends Fragment {
         Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser);
         profileImage = (CircleImageView) view.findViewById(R.id.profileImage);
         fullNameTextView = (TextView) view.findViewById(R.id.fullNameTextView);
+        creditTextView = (TextView) view.findViewById(R.id.creditTextView);
 
         fullNameTextView.setText(profile.getCompleteName());
 
         Glide.with(getContext()).load(UsersRepository.getInstance(SessionVariables.FacebookId).profileImageUrl()).dontAnimate().into(profileImage);
-
+        creditTextView.setText("S/ " + String.format("%.2f",profile.getCredit()));
         return view;
     }
 

@@ -70,4 +70,11 @@ public class ProfilesRepository {
         return null;
     }
 
+    public ProfilesRepository UpdateProfile(Profile profile){
+
+        DataReference.getInstance().child("profiles").child(profile.getIdProfile()).setValue(profile);
+
+        return this;
+    }
+
 }
