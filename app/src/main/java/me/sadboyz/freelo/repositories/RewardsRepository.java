@@ -71,7 +71,7 @@ public class RewardsRepository {
                 rewards = new ArrayList<>();
                 while(iterable.iterator().hasNext()) {
                     Reward reward = iterable.iterator().next().getValue(Reward.class);
-                    if(reward.isStatus())rewards.add(reward);
+                    if(reward.isStatus() && reward.getQuantity() > 0)rewards.add(reward);
                 }
 
             }

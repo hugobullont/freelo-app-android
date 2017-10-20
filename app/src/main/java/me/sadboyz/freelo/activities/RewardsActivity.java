@@ -44,7 +44,7 @@ public class RewardsActivity extends AppCompatActivity {
     //TextView quantityTextView;
     ImageView pictureImageView;
     Button buttonR;
-    TextView insufficientCreditTextView;
+    Button insufficientCreditButton;
 
     boolean apply = false;
 
@@ -107,13 +107,13 @@ public class RewardsActivity extends AppCompatActivity {
         nameTextView.setText(reward.getName()+" a "+"S/"+String.format("%.2f",reward.getPrice()) );
         descriptionTextView.setText(reward.getDescription());
         buttonR = (Button) findViewById(R.id.buttonR);
-        insufficientCreditTextView=(TextView) findViewById(R.id.insufficientCreditTexView);
+        insufficientCreditButton=(Button) findViewById(R.id.insufficientCreditButton);
 
         if (!(ExchangesRepository.getInstance().ValidateCredit(reward))){
             buttonR.setVisibility(View.INVISIBLE);
-            insufficientCreditTextView.setVisibility(View.VISIBLE);
+            insufficientCreditButton.setVisibility(View.VISIBLE);
         }else{
-            insufficientCreditTextView.setVisibility(View.INVISIBLE);
+            insufficientCreditButton.setVisibility(View.INVISIBLE);
         }
         //priceTextView.setText(String.format("%.2f",reward.getPrice()));
         //quantityTextView.setText(String.valueOf(reward.getQuantity()));
