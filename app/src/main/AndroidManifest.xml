@@ -31,7 +31,8 @@
             android:label="@string/app_name" />
         <activity android:name=".activities.RewardsActivity" />
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.WorkActivity"></activity>
+        <activity android:name=".activities.WorkActivity" />
+        <activity android:name=".activities.FollowingFreelosActivity"></activity>
     </application>
 
 </manifest>

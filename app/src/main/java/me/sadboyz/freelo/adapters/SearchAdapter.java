@@ -48,7 +48,7 @@ public class SearchAdapter  extends RecyclerView.Adapter<SearchAdapter.ViewHolde
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                Intent intent = new Intent(context, WorkActivity.class);
+                Intent intent = new Intent("Search",null,context, WorkActivity.class);
                 intent.putExtras(work.toBundle());
                 context.startActivity(intent);
             }

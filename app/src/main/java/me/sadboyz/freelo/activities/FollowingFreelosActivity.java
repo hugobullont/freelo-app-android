@@ -18,9 +18,8 @@ import me.sadboyz.freelo.global.SessionVariables;
 import me.sadboyz.freelo.models.Work;
 import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.CategoriesRepository;
-import me.sadboyz.freelo.repositories.ProfilesRepository;
 
-public class WorkActivity extends AppCompatActivity {
+public class FollowingFreelosActivity extends AppCompatActivity {
 
     TextView nameWorkTextView;
     TextView categoryWorkTextView;
@@ -34,11 +33,12 @@ public class WorkActivity extends AppCompatActivity {
 
     boolean apply = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_work);
+        Intent intent = getIntent();
+        String accion = intent.getAction();
+        setContentView(R.layout.activity_following_freelos);
         work = Work.from(getIntent().getExtras());
         loadInfoWork(work);
         this.setTitleView();
@@ -48,7 +48,9 @@ public class WorkActivity extends AppCompatActivity {
         TextView tv = new TextView(getApplicationContext());
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         tv.setLayoutParams(lp);
-        tv.setText("Freelo");
+        Intent intent = getIntent();
+        String accion = intent.getAction();
+        tv.setText(accion);
         tv.setTextSize(20);
         tv.setTextColor(Color.parseColor("#FFFFFF"));
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
@@ -68,12 +70,7 @@ public class WorkActivity extends AppCompatActivity {
         applyButton = (Button) findViewById(R.id.applyButton);
         applyTextView = (TextView) findViewById(R.id.applyTextView);
 
-        Intent intent = getIntent();
-        final String adapter = intent.getAction();
-        if (adapter=="Following"){
-            applyButton.setText("Unfollow");
-        }
-
+        applyButton.setText("Cancelar");
         nameWorkTextView.setText(work.getName());
         categoryWorkTextView.setText(CategoriesRepository.getInstance().getCategoryById(work.getIdCategory()).getName());
         descriptionWorkTextView.setText(work.getDescription());
@@ -84,11 +81,7 @@ public class WorkActivity extends AppCompatActivity {
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (adapter=="Following"){
-                    showCancelAlert();
-                }else {
-                    showApplyAlert();
-                }
+                showApplyAlert();
             }
         });
 
@@ -117,21 +110,4 @@ public class WorkActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private void showCancelAlert()
-    {
-        AlertDialog.Builder builder =
-                new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
-        builder.setTitle("Dejar de seguir  Freelo");
-        builder.setMessage("Este Freelo será borrado de tu lista de Seguidos...");
-        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //ApplicationsRepository.getInstance().AddApplicationToDatabase(SessionVariables.CurrentidUser,work.getIdWork());
-                apply = true;
-                //loadInfoWork(work);
-            }
-        });
-        builder.setNegativeButton("Cancelar", null);
-        builder.show();
-    }
 }
