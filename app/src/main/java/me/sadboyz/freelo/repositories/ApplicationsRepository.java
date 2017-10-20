@@ -107,4 +107,10 @@ public class ApplicationsRepository {
         }
         return workApplications;
     }
+
+    public ApplicationsRepository setUnfollowApplication(Application application){
+        application.setStatus("deleted");
+        DataReference.getInstance().child("applications").child(application.getIdApplication()).setValue(application);
+        return this;
+    }
 }

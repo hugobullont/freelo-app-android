@@ -11,7 +11,7 @@ public class Application {
     private String idWork;
     private String idUser;
     private String date;
-    private String status; //open - selected - notSelected - *only selected* finish
+    private String status; //open - selected - notSelected - *only selected* finish - deleted
 
 
     public Application() {
