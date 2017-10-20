@@ -58,6 +58,14 @@ public class ExchangesRepository {
         return true;
     }
 
+    public boolean ValidateCredit(Reward reward){
+        if(ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).getCredit()
+                - reward.getPrice() < 0){
+            return false;
+        }
+        return true;
+    }
+
     public void EventLoad()
     {
         DataReference.getInstance().addValueEventListener(new ValueEventListener() {

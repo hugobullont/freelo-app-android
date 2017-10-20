@@ -19,6 +19,7 @@
     <string name="sample_priece">Sample Priece</string>
     <string name="sample_quantity">Sample Quantity</string>
     <string name="button_text">Info</string>
+    <string name="insufficient_credit">Crédito insuficiente</string>
     <string name="button_add">Generar Cupón</string>
 
     <string name="sample_name_work">Sample Work</string>

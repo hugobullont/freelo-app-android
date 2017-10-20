@@ -21,6 +21,19 @@
             android:textColor="@color/colorTextWhite"
             android:backgroundTint="@color/colorPrimary"
             android:background="@color/colorPrimary"/>
+    <TextView
+        android:id="@+id/insufficientCreditTexView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/insufficient_credit"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:textColor="@color/colorTextWhite"
+        android:backgroundTint="@color/colorPrimary"
+        android:background="@color/colorPrimary"/>
 
     <ScrollView
             android:layout_width="0dp"

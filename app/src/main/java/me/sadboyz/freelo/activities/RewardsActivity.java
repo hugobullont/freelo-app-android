@@ -25,10 +25,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import me.sadboyz.freelo.R;
 import me.sadboyz.freelo.global.SessionVariables;
+import me.sadboyz.freelo.models.Profile;
 import me.sadboyz.freelo.models.Reward;
 import me.sadboyz.freelo.repositories.ApplicationsRepository;
+import me.sadboyz.freelo.repositories.ExchangesRepository;
 import me.sadboyz.freelo.repositories.ImagesRepository;
 import me.sadboyz.freelo.repositories.ProfilesRepository;
+import me.sadboyz.freelo.repositories.RewardsRepository;
 
 /**
  * Created by Leonel on 26/09/2017.
@@ -41,6 +44,7 @@ public class RewardsActivity extends AppCompatActivity {
     //TextView quantityTextView;
     ImageView pictureImageView;
     Button buttonR;
+    TextView insufficientCreditTextView;
 
     boolean apply = false;
 
@@ -52,8 +56,6 @@ public class RewardsActivity extends AppCompatActivity {
         Reward reward = Reward.from(getIntent().getExtras());
         loadInfoRewards(reward);
         this.setTitleView(true,true);
-
-
     }
 
     public void setTitleView(boolean title, boolean credit) {
@@ -96,6 +98,7 @@ public class RewardsActivity extends AppCompatActivity {
     }
 
     private void loadInfoRewards(final Reward reward) {
+
         nameTextView = (TextView)findViewById(R.id.rewardsNameTextView);
         descriptionTextView= (TextView)findViewById(R.id.rewardsDescriptionTextView);
         //priceTextView = (TextView)findViewById(R.id.rewardsPriceTextView);
@@ -104,6 +107,14 @@ public class RewardsActivity extends AppCompatActivity {
         nameTextView.setText(reward.getName()+" a "+"S/"+String.format("%.2f",reward.getPrice()) );
         descriptionTextView.setText(reward.getDescription());
         buttonR = (Button) findViewById(R.id.buttonR);
+        insufficientCreditTextView=(TextView) findViewById(R.id.insufficientCreditTexView);
+
+        if (!(ExchangesRepository.getInstance().ValidateCredit(reward))){
+            buttonR.setVisibility(View.INVISIBLE);
+            insufficientCreditTextView.setVisibility(View.VISIBLE);
+        }else{
+            insufficientCreditTextView.setVisibility(View.INVISIBLE);
+        }
         //priceTextView.setText(String.format("%.2f",reward.getPrice()));
         //quantityTextView.setText(String.valueOf(reward.getQuantity()));
         //pictureImageView.setImageResource(reward.getPictureID());
@@ -121,31 +132,39 @@ public class RewardsActivity extends AppCompatActivity {
         buttonR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showApplyAlert();
+                showApplyAlert(reward);
             }
         });
-
-        if(apply){
-            buttonR.setVisibility(View.INVISIBLE);
-        }
-
-
     }
 
-    private void showApplyAlert() {
+    private void showApplyAlert(final Reward reward) {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
         builder.setTitle("Canjear Cupon");
         builder.setMessage("Su cupon de descuento se le  enviara a un lugar por definir \n\n" +
                 "¡Freelo informa... tal vez te lo enviemos por FB !");
-        builder.setPositiveButton("Aplicar", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Generar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                apply = true;
-                buttonR.setVisibility(View.INVISIBLE);
+                ExchangesRepository.getInstance().AddExchangeToDatabase(
+                        ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).getIdUser()
+                        ,reward.getIdReward());
+                loadInfoRewards(reward);
+                setTitleView(true,true);
             }
         });
         builder.setNegativeButton("Cancelar", null);
+        builder.show();
+    }
+
+    private void showInsufficientCreditAlert() {
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
+        builder.setTitle("Credito Insuficiente");
+        builder.setMessage("Usted no cuenta con crédito suficiente \n\n" +
+                "Insert coin xD");
+        builder.setNeutralButton("Aceptar",null);
+        //builder.setNegativeButton("Cancelar", null);
         builder.show();
     }
 
