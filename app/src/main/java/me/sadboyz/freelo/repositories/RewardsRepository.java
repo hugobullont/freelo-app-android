@@ -56,6 +56,12 @@ public class RewardsRepository {
         return this;
     }*/
 
+    public RewardsRepository UpdateRewardQuantity(Reward reward){
+        reward.setQuantity(reward.getQuantity()-1);
+        DataReference.getInstance().child("rewards").child(reward.getIdReward()).setValue(reward);
+        return this;
+    }
+
     public void EventLoad()
     {
         DataReference.getInstance().addValueEventListener(new ValueEventListener(){

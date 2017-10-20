@@ -55,6 +55,7 @@ public class ExchangesRepository {
         Double credit = profile.getCredit() - reward.getPrice();
         profile.setCredit(credit);
         ProfilesRepository.getInstance().UpdateProfile(profile);
+        RewardsRepository.getInstance().UpdateRewardQuantity(reward);
         return true;
     }
 

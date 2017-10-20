@@ -157,21 +157,9 @@ public class RewardsActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private void showInsufficientCreditAlert() {
-        AlertDialog.Builder builder =
-                new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
-        builder.setTitle("Credito Insuficiente");
-        builder.setMessage("Usted no cuenta con crédito suficiente \n\n" +
-                "Insert coin xD");
-        builder.setNeutralButton("Aceptar",null);
-        //builder.setNegativeButton("Cancelar", null);
-        builder.show();
-    }
-
     public void loadImage(RequestManager glide, String url, ImageView view)
     {
         glide.load(url).into(view);
     }
-
 
 }

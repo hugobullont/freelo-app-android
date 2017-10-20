@@ -65,6 +65,11 @@ public class RewardsFragment extends Fragment {
     }
 
 
-
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        rewards = RewardsRepository.getInstance().getRewards();
+        rewardsAdapter.setRewards(rewards);
+        rewardsRecyclerView.setAdapter(rewardsAdapter);
+    }
 }
