@@ -65,6 +65,7 @@
     <string name="Mi_perfil">Mi perfil</string>
 
     <string name="facebook_app_id">1528762440479387</string>
+    <string name="fb_login_protocol_scheme">fb1528762440479387</string>
 
     <string name="title_information_card">Información</string>
     <string name="credit">Crédito:</string>

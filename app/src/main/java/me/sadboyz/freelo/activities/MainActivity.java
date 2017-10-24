@@ -58,53 +58,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_login);
         setContentView(R.layout.activity_main);
-/*
-        idProfileTextInputEditText = (TextInputEditText) findViewById(R.id.idProfileInputTextView);
-        nameProfileTextInputEditText = (TextInputEditText) findViewById(R.id.nameInputTextView);
-        lastanameTextInputEditText = (TextInputEditText) findViewById(R.id.lastnameProfileInputTextView);
-        emailTextInputEditText = (TextInputEditText) findViewById(R.id.emailProfileInputTextView);
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user != null){
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-            String id = user.getUid();
-
-            nameProfileTextInputEditText.setText(name);
-            lastanameTextInputEditText.setText("");
-            emailTextInputEditText.setText(email);
-            idProfileTextInputEditText.setText(id);
-        }else {
-            goLoginScreen();
-        }
-*/
-
-
-
-        /*if(AccessToken.getCurrentAccessToken()==null)
-        {
-            goLoginScreen();
-        }else {*/
-
-            setContentView(R.layout.activity_main);
-            BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-            navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-            this.setTitleView(true,true);
-            navigateAccordingTo(R.id.navigation_search);
-        /*}*/
+        setContentView(R.layout.activity_main);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        this.setTitleView(true,true);
+        navigateAccordingTo(R.id.navigation_search);
 
     }
-
-    private void goLoginScreen()
-    {
-        Intent intent = new Intent(this, LoginActivity.class);
-        //Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
+    
 
     public void setTitleView(boolean title, boolean credit) {
 
@@ -184,11 +146,5 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return false;
-    }
-
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        LoginManager.getInstance().logOut();
-        goLoginScreen();
     }
 }
