@@ -1,9 +1,12 @@
 package me.sadboyz.freelo.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import me.sadboyz.freelo.R;
 import me.sadboyz.freelo.global.SessionVariables;
@@ -22,27 +25,29 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.LoadData();
-        setContentView(R.layout.activity_splash);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent homeIntent = new Intent(SplashActivity.this,MainActivity.class);
-                startActivity(homeIntent);
-                finish();
-            }
-        },SPLASH_TIME_OUT);
+
+            super.onCreate(savedInstanceState);
+            this.LoadData();
+            setContentView(R.layout.activity_splash);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent homeIntent = new Intent(SplashActivity.this,MainActivity.class);
+                    startActivity(homeIntent);
+                    finish();
+                }
+            },SPLASH_TIME_OUT);
     }
 
     private void LoadData()
     {
-        RewardsRepository.getInstance().EventLoad();
-        WorksRepository.getInstance().EventLoad();
-        CategoriesRepository.getInstance().EventLoad();
-        ApplicationsRepository.getInstance().EventLoad();
-        ExchangesRepository.getInstance().EventLoad();
-        TransactionsRepository.getInstance().EventLoad();
-        ProfilesRepository.getInstance().EventLoad();
+            RewardsRepository.getInstance().EventLoad();
+            WorksRepository.getInstance().EventLoad();
+            CategoriesRepository.getInstance().EventLoad();
+            ApplicationsRepository.getInstance().EventLoad();
+            ExchangesRepository.getInstance().EventLoad();
+            TransactionsRepository.getInstance().EventLoad();
+            ProfilesRepository.getInstance().EventLoad();
+
     }
 }

@@ -63,6 +63,7 @@ public class ProfilesRepository {
 
     public Profile GetProfileByUserId(String idUser)
     {
+        if(profiles == null ) return null;
         for (Profile profile:profiles) {
             if(profile.getIdUser().equals(idUser))
                 return profile;

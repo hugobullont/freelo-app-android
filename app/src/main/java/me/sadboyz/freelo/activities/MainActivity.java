@@ -1,16 +1,19 @@
 package me.sadboyz.freelo.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -33,6 +36,7 @@ import me.sadboyz.freelo.fragments.ProfileFragment;
 import me.sadboyz.freelo.fragments.RewardsFragment;
 import me.sadboyz.freelo.fragments.SearchFragment;
 import me.sadboyz.freelo.global.SessionVariables;
+import me.sadboyz.freelo.models.Profile;
 import me.sadboyz.freelo.repositories.ProfilesRepository;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     private TextView mTitle;
+
+    boolean noConnection = false;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,54 +63,64 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setContentView(R.layout.activity_main);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        this.setTitleView(true,true);
-        navigateAccordingTo(R.id.navigation_search);
+
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_main);
+            BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+            navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+            this.setTitleView(true, true);
 
     }
-    
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        if(!noConnection) {navigateAccordingTo(R.id.navigation_search);}
+    }
+
 
     public void setTitleView(boolean title, boolean credit) {
 
-        RelativeLayout ly = new RelativeLayout(getApplicationContext());
-        TextView tv = new TextView(getApplicationContext());
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
+            RelativeLayout ly = new RelativeLayout(getApplicationContext());
+            TextView tv = new TextView(getApplicationContext());
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
 
-        tv.setGravity(Gravity.START);
-        tv.setLayoutParams(lp);
-        tv.setText(getString(R.string.app_name));
-        tv.setTextSize(20);
-        tv.setTextColor(Color.parseColor("#FFFFFF"));
-        if(title)
-        {
-            Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
-            tv.setTypeface(tf);
-        }
+            tv.setGravity(Gravity.START);
+            tv.setLayoutParams(lp);
+            tv.setText(getString(R.string.app_name));
+            tv.setTextSize(20);
+            tv.setTextColor(Color.parseColor("#FFFFFF"));
+            if(title)
+            {
+                Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+                tv.setTypeface(tf);
+            }
 
-        ly.addView(tv);
+            ly.addView(tv);
+
+            Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser);
+            if(profile == null){
+                noConnection = true;
+            }
 
 
-        if(credit)
-        {
-            TextView cv = new TextView(getApplicationContext());
-            cv.setGravity(Gravity.END);
-            cv.setLayoutParams(lp);
-            //cv.setText("S/ 100.00");
-            Double cred = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).getCredit();
-            cv.setText("S/ " + String.format("%.2f",cred));
-            cv.setTextSize(20);
-            cv.setTextColor(Color.parseColor("#FFFFFF"));
-            ly.addView(cv);
-            Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
-            cv.setTypeface(tf);
-        }
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(ly);
-
+            if(credit && !noConnection)
+            {
+                TextView cv = new TextView(getApplicationContext());
+                cv.setGravity(Gravity.END);
+                cv.setLayoutParams(lp);
+                //cv.setText("S/ 100.00");
+                    Double cred = profile.getCredit();
+                    cv.setText("S/ " + String.format("%.2f", cred));
+                    cv.setTextSize(20);
+                    cv.setTextColor(Color.parseColor("#FFFFFF"));
+                    ly.addView(cv);
+                    Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+                    cv.setTypeface(tf);
+            }
+            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            getSupportActionBar().setCustomView(ly);
     }
 
     private Fragment getFragmentFor (int id)
@@ -152,5 +168,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         this.setTitleView(true,true);
+        if(noConnection) showNoConnection();
     }
+
+    private void showNoConnection()
+    {
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
+        builder.setTitle("Sin Conexión");
+        builder.setMessage("No tienes conexión para usar Freelo. \nVuelve más tarde");
+
+        builder.setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+            }
+
+        });
+        builder.setCancelable(false);
+        builder.show();
+    }
+
 }

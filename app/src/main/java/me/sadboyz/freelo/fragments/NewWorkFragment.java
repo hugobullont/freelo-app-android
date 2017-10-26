@@ -1,11 +1,13 @@
 package me.sadboyz.freelo.fragments;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.TestLooperManager;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,14 +73,7 @@ public class NewWorkFragment extends Fragment {
             public void onClick(View view) {
                 WorksRepository wr = new WorksRepository();
                 try {
-                    boolean work = wr.AddWorkToDatabase(nameTextInput.getText().toString(),
-                            descriptionTextInput.getText().toString(),
-                            Double.parseDouble(prieceTextInput.getText().toString()),
-                            parseSelected((String) spinner.getSelectedItem()).getIdCategory());
-                    if(work){Toast.makeText(getContext(),R.string.text_success_new_work,Toast.LENGTH_SHORT).show(); hasError = false;}
-                    else{Toast.makeText(getContext(),R.string.text_no_credit_new_work,Toast.LENGTH_SHORT).show(); hasError = true;}
-
-
+                    showCreateAlert(wr);
                 }
                 catch (Exception ex){
                     Toast.makeText(getContext(),R.string.text_error_new_work,Toast.LENGTH_SHORT).show();
@@ -90,8 +85,6 @@ public class NewWorkFragment extends Fragment {
                     descriptionTextInput.setText("");
                     prieceTextInput.setText("");
                 }
-
-
             }
         });
         return view;
@@ -111,6 +104,32 @@ public class NewWorkFragment extends Fragment {
             }
         }
         return null;
+    }
+
+    private void showCreateAlert(final WorksRepository wr)
+    {
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(this.getContext(), R.style.AppCompatAlertDialogStyle);
+        builder.setTitle("Crear Freelo");
+        builder.setMessage("¿Estás seguro de crear este Freelo? Se descontará la inversión de tus créditos Freelo.");
+
+        builder.setPositiveButton("Crear", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                boolean work = wr.AddWorkToDatabase(nameTextInput.getText().toString(),
+                        descriptionTextInput.getText().toString(),
+                        Double.parseDouble(prieceTextInput.getText().toString()),
+                        parseSelected((String) spinner.getSelectedItem()).getIdCategory());
+                if(work){
+
+                    Toast.makeText(getContext(),R.string.text_success_new_work,Toast.LENGTH_SHORT).show();
+                    hasError = false;
+                }
+                else{Toast.makeText(getContext(),R.string.text_no_credit_new_work,Toast.LENGTH_SHORT).show(); hasError = true;}
+            }
+        });
+        builder.setNegativeButton("Cancelar", null);
+        builder.show();
     }
 
 }
