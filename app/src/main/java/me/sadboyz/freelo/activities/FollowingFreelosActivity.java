@@ -1,7 +1,6 @@
 package me.sadboyz.freelo.activities;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
@@ -14,10 +13,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import me.sadboyz.freelo.R;
-import me.sadboyz.freelo.global.SessionVariables;
 import me.sadboyz.freelo.models.Work;
+import me.sadboyz.freelo.models.Application;
 import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.CategoriesRepository;
+import me.sadboyz.freelo.repositories.WorksRepository;
 
 public class FollowingFreelosActivity extends AppCompatActivity {
 
@@ -29,18 +29,15 @@ public class FollowingFreelosActivity extends AppCompatActivity {
     TextView createdByTextView;
     TextView applyTextView;
     Button applyButton;
-    Work work;
+    Application application;
 
-    boolean apply = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        String accion = intent.getAction();
         setContentView(R.layout.activity_following_freelos);
-        work = Work.from(getIntent().getExtras());
-        loadInfoWork(work);
+        application = Application.from(getIntent().getExtras());
+        loadInfoApplication(application);
         this.setTitleView();
     }
 
@@ -48,9 +45,7 @@ public class FollowingFreelosActivity extends AppCompatActivity {
         TextView tv = new TextView(getApplicationContext());
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         tv.setLayoutParams(lp);
-        Intent intent = getIntent();
-        String accion = intent.getAction();
-        tv.setText(accion);
+        tv.setText("Freelo");
         tv.setTextSize(20);
         tv.setTextColor(Color.parseColor("#FFFFFF"));
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
@@ -59,8 +54,9 @@ public class FollowingFreelosActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(tv);
     }
 
-    private void loadInfoWork(final Work work)
+    private void loadInfoApplication(final Application application)
     {
+        Work work= WorksRepository.getInstance().getWorkById(application.getIdWork());
         nameWorkTextView = (TextView) findViewById(R.id.nameWorkTextView);
         descriptionWorkTextView = (TextView) findViewById(R.id.descriptionWorkTextView);
         categoryWorkTextView = (TextView) findViewById(R.id.categoryWorkTextView);
@@ -76,34 +72,28 @@ public class FollowingFreelosActivity extends AppCompatActivity {
         descriptionWorkTextView.setText(work.getDescription());
         pubPriceWorkTextView.setText("S/ " + String.format("%.2f",work.getPubPrice()));
         dateWorkTextView.setText(work.getDate());
-        //createdByTextView.setText(ProfilesRepository.getInstance().GetProfileByUserId(work.getCreatedBy()).getName());
 
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showApplyAlert();
+                showCancelAlert(application);
             }
         });
 
-        if(apply){
-            applyButton.setVisibility(View.INVISIBLE);
-            applyTextView.setVisibility(View.VISIBLE);
-        }
     }
 
-    private void showApplyAlert()
+    private void showCancelAlert(final Application application)
     {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
-        builder.setTitle("Aplicar al Freelo");
-        builder.setMessage("Tu perfil será enviado al creador de este Freelo para que pueda comparar solicitudes.\n\n" +
-                "¡Te notificaremos si resultas seleccionado!");
-        builder.setPositiveButton("Aplicar", new DialogInterface.OnClickListener() {
+        builder.setTitle("Dejar de seguir  Freelo");
+        builder.setMessage("Este Freelo será borrado de tu lista de Seguidos...");
+
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ApplicationsRepository.getInstance().AddApplicationToDatabase(SessionVariables.CurrentidUser,work.getIdWork());
-                apply = true;
-                loadInfoWork(work);
+                ApplicationsRepository.getInstance().setUnfollowApplication(application);
+                finish();
             }
         });
         builder.setNegativeButton("Cancelar", null);

@@ -45,7 +45,7 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.View
 
     @Override
     public void onBindViewHolder(FollowingAdapter.ViewHolder holder, int position) {
-        Application application = getApplications().get(position);
+        final Application application = getApplications().get(position);
         final Work work = WorksRepository.getInstance().getWorkById(application.getIdWork());
         if(work != null) {
             holder.nameFollowingTextView.setText(work.getName());
@@ -53,12 +53,13 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.View
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent("Following",null,context, WorkActivity.class);
-                    intent.putExtras(work.toBundle());
+                    Intent intent = new Intent(context, FollowingFreelosActivity.class);
+                    intent.putExtras(application.toBundle());
                     context.startActivity(intent);
                 }
             });
         }
+
     }
 
     @Override

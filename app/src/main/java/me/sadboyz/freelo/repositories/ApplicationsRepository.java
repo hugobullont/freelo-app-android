@@ -114,13 +114,4 @@ public class ApplicationsRepository {
         return this;
     }
 
-    public Application getApplicationByWorkId(String workId){
-        Application application = new Application();
-        for(Application app : applications){
-            if(app.getIdWork().equals(workId)){
-                return app;
-            }
-        }
-        return null;
-    }
 }

@@ -1,8 +1,6 @@
 package me.sadboyz.freelo.activities;
 
-import android.app.Application;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
@@ -70,12 +68,6 @@ public class WorkActivity extends AppCompatActivity {
         applyButton = (Button) findViewById(R.id.applyButton);
         applyTextView = (TextView) findViewById(R.id.applyTextView);
 
-        Intent intent = getIntent();
-        final String adapter = intent.getAction();
-        if (adapter=="Following"){
-            applyButton.setText("Unfollow");
-        }
-
         nameWorkTextView.setText(work.getName());
         categoryWorkTextView.setText(CategoriesRepository.getInstance().getCategoryById(work.getIdCategory()).getName());
         descriptionWorkTextView.setText(work.getDescription());
@@ -86,11 +78,7 @@ public class WorkActivity extends AppCompatActivity {
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (adapter=="Following"){
-                    showCancelAlert();
-                }else {
-                    showApplyAlert();
-                }
+                showApplyAlert();
             }
         });
 
@@ -113,28 +101,6 @@ public class WorkActivity extends AppCompatActivity {
                 ApplicationsRepository.getInstance().AddApplicationToDatabase(SessionVariables.CurrentidUser,work.getIdWork());
                 apply = true;
                 loadInfoWork(work);
-            }
-        });
-        builder.setNegativeButton("Cancelar", null);
-        builder.show();
-    }
-
-    private void showCancelAlert()
-    {
-        AlertDialog.Builder builder =
-                new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
-        builder.setTitle("Dejar de seguir  Freelo");
-        builder.setMessage("Este Freelo será borrado de tu lista de Seguidos...");
-        final Intent intent=getIntent();
-        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ApplicationsRepository.getInstance().setUnfollowApplication(ApplicationsRepository.getInstance().
-                getApplicationByWorkId(work.getIdWork()));
-                finish();
-                //ApplicationsRepository.getInstance().AddApplicationToDatabase(SessionVariables.CurrentidUser,work.getIdWork());
-                apply = true;
-                //loadInfoWork(work);
             }
         });
         builder.setNegativeButton("Cancelar", null);
