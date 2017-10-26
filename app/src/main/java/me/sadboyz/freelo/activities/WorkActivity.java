@@ -1,5 +1,6 @@
 package me.sadboyz.freelo.activities;
 
+import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,6 +20,7 @@ import me.sadboyz.freelo.models.Work;
 import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.CategoriesRepository;
 import me.sadboyz.freelo.repositories.ProfilesRepository;
+import me.sadboyz.freelo.repositories.WorksRepository;
 
 public class WorkActivity extends AppCompatActivity {
 
@@ -123,9 +125,13 @@ public class WorkActivity extends AppCompatActivity {
                 new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
         builder.setTitle("Dejar de seguir  Freelo");
         builder.setMessage("Este Freelo será borrado de tu lista de Seguidos...");
+        final Intent intent=getIntent();
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                ApplicationsRepository.getInstance().setUnfollowApplication(ApplicationsRepository.getInstance().
+                getApplicationByWorkId(work.getIdWork()));
+                finish();
                 //ApplicationsRepository.getInstance().AddApplicationToDatabase(SessionVariables.CurrentidUser,work.getIdWork());
                 apply = true;
                 //loadInfoWork(work);

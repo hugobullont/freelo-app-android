@@ -113,4 +113,14 @@ public class ApplicationsRepository {
         DataReference.getInstance().child("applications").child(application.getIdApplication()).setValue(application);
         return this;
     }
+
+    public Application getApplicationByWorkId(String workId){
+        Application application = new Application();
+        for(Application app : applications){
+            if(app.getIdWork().equals(workId)){
+                return app;
+            }
+        }
+        return null;
+    }
 }
