@@ -38,7 +38,8 @@ public class NewWorkFragment extends Fragment {
     Button createButton;
     TextInputEditText nameTextInput;
     TextInputEditText descriptionTextInput;
-    TextInputEditText prieceTextInput;
+    TextInputEditText priceTextInput;
+    WorksRepository wr;
     boolean hasError = false;
 
     public NewWorkFragment() {
@@ -56,7 +57,7 @@ public class NewWorkFragment extends Fragment {
         createButton =(Button) view.findViewById(R.id.createButton);
         nameTextInput = (TextInputEditText) view.findViewById(R.id.nameInputTextView);
         descriptionTextInput = (TextInputEditText) view.findViewById(R.id.descriptionInputTextView);
-        prieceTextInput = (TextInputEditText) view.findViewById(R.id.pubPrieceInputTextView);
+        priceTextInput = (TextInputEditText) view.findViewById(R.id.pubPrieceInputTextView);
         try {
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
@@ -71,9 +72,13 @@ public class NewWorkFragment extends Fragment {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WorksRepository wr = new WorksRepository();
+                 wr = new WorksRepository();
                 try {
-                    showCreateAlert(wr);
+                    showCreateAlert(nameTextInput.getText().toString(),
+                            descriptionTextInput.getText().toString(),
+                            Double.parseDouble(priceTextInput.getText().toString()),
+                            parseSelected((String) spinner.getSelectedItem()).getIdCategory());
+                    hasError = false;
                 }
                 catch (Exception ex){
                     Toast.makeText(getContext(),R.string.text_error_new_work,Toast.LENGTH_SHORT).show();
@@ -83,7 +88,7 @@ public class NewWorkFragment extends Fragment {
                 {
                     nameTextInput.setText("");
                     descriptionTextInput.setText("");
-                    prieceTextInput.setText("");
+                    priceTextInput.setText("");
                 }
             }
         });
@@ -106,7 +111,7 @@ public class NewWorkFragment extends Fragment {
         return null;
     }
 
-    private void showCreateAlert(final WorksRepository wr)
+    private void showCreateAlert(final String nameWork, final String description, final Double workPrice, final String categoryID)
     {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(this.getContext(), R.style.AppCompatAlertDialogStyle);
@@ -116,14 +121,9 @@ public class NewWorkFragment extends Fragment {
         builder.setPositiveButton("Crear", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                boolean work = wr.AddWorkToDatabase(nameTextInput.getText().toString(),
-                        descriptionTextInput.getText().toString(),
-                        Double.parseDouble(prieceTextInput.getText().toString()),
-                        parseSelected((String) spinner.getSelectedItem()).getIdCategory());
+                boolean work = wr.AddWorkToDatabase(nameWork,description,workPrice,categoryID);
                 if(work){
-
                     Toast.makeText(getContext(),R.string.text_success_new_work,Toast.LENGTH_SHORT).show();
-                    hasError = false;
                 }
                 else{Toast.makeText(getContext(),R.string.text_no_credit_new_work,Toast.LENGTH_SHORT).show(); hasError = true;}
             }
