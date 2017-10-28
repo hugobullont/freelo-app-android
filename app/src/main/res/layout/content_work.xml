@@ -63,7 +63,8 @@
                    android:text="@string/work_price"
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintBottom_toBottomOf="parent"
-                   android:layout_margin="@dimen/default_margin"
+                   app:layout_constraintTop_toTopOf="parent"
+                   android:layout_margin="@dimen/default_margin_base"
                    android:textStyle="bold" />
 
                <TextView
@@ -72,9 +73,11 @@
                    android:layout_height="wrap_content"
                    android:text="@string/sample_pubPrice_work"
                    app:layout_constraintEnd_toEndOf="@id/titlePriceTextView"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintBottom_toBottomOf="parent"
                    android:textSize="23dp"
                    android:textStyle="bold"
-                   android:layout_margin="@dimen/default_margin"
+                   android:layout_margin="@dimen/default_margin_base"
                    android:textColor="@color/colorPrimary"/>
 
            </android.support.constraint.ConstraintLayout>
