@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import me.sadboyz.freelo.R;
 import me.sadboyz.freelo.global.SessionVariables;
 import me.sadboyz.freelo.models.Work;
@@ -32,6 +35,7 @@ public class WorkActivity extends AppCompatActivity {
     Button applyButton;
     Work work;
 
+    Date d = new Date();
     boolean apply = false;
 
 
@@ -72,7 +76,11 @@ public class WorkActivity extends AppCompatActivity {
         categoryWorkTextView.setText(CategoriesRepository.getInstance().getCategoryById(work.getIdCategory()).getName());
         descriptionWorkTextView.setText(work.getDescription());
         pubPriceWorkTextView.setText("S/ " + String.format("%.2f",work.getPubPrice()));
-        dateWorkTextView.setText(work.getDate());
+
+
+        SimpleDateFormat fecc = new SimpleDateFormat("d 'de' MMMM 'del' yyyy");
+        String fechacComplString = fecc.format(d);
+        dateWorkTextView.setText(fechacComplString);
         //createdByTextView.setText(ProfilesRepository.getInstance().GetProfileByUserId(work.getCreatedBy()).getName());
 
         applyButton.setOnClickListener(new View.OnClickListener() {
