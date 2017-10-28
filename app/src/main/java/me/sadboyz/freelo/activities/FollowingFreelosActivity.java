@@ -18,6 +18,7 @@ import me.sadboyz.freelo.models.Application;
 import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.CategoriesRepository;
 import me.sadboyz.freelo.repositories.WorksRepository;
+import me.sadboyz.freelo.ui.Format;
 
 public class FollowingFreelosActivity extends AppCompatActivity {
 
@@ -71,7 +72,7 @@ public class FollowingFreelosActivity extends AppCompatActivity {
         categoryWorkTextView.setText(CategoriesRepository.getInstance().getCategoryById(work.getIdCategory()).getName());
         descriptionWorkTextView.setText(work.getDescription());
         pubPriceWorkTextView.setText("S/ " + String.format("%.2f",work.getPubPrice()));
-        dateWorkTextView.setText(work.getDate());
+        dateWorkTextView.setText(Format.completeDateFormat(work.getDate()));
 
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override

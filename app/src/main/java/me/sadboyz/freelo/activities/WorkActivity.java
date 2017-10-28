@@ -22,6 +22,7 @@ import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.CategoriesRepository;
 import me.sadboyz.freelo.repositories.ProfilesRepository;
 import me.sadboyz.freelo.repositories.WorksRepository;
+import me.sadboyz.freelo.ui.Format;
 
 public class WorkActivity extends AppCompatActivity {
 
@@ -34,8 +35,6 @@ public class WorkActivity extends AppCompatActivity {
     TextView applyTextView;
     Button applyButton;
     Work work;
-
-    Date d = new Date();
     boolean apply = false;
 
 
@@ -78,9 +77,9 @@ public class WorkActivity extends AppCompatActivity {
         pubPriceWorkTextView.setText("S/ " + String.format("%.2f",work.getPubPrice()));
 
 
-        SimpleDateFormat fecc = new SimpleDateFormat("d 'de' MMMM 'del' yyyy");
-        String fechacComplString = fecc.format(d);
-        dateWorkTextView.setText(fechacComplString);
+
+
+        dateWorkTextView.setText(Format.completeDateFormat(work.getDate()));
         //createdByTextView.setText(ProfilesRepository.getInstance().GetProfileByUserId(work.getCreatedBy()).getName());
 
         applyButton.setOnClickListener(new View.OnClickListener() {
