@@ -35,7 +35,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="?colorPrimaryDark"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     android:layout_margin="@dimen/default_margin_base" />
@@ -78,7 +78,7 @@
                    android:textSize="23dp"
                    android:textStyle="bold"
                    android:layout_margin="@dimen/default_margin_base"
-                   android:textColor="@color/colorPrimary"/>
+                   android:textColor="?colorPrimary"/>
 
            </android.support.constraint.ConstraintLayout>
        </android.support.v7.widget.CardView>
@@ -207,7 +207,7 @@
                    app:layout_constraintTop_toBottomOf="@id/createdByWorkTextView"
                    app:layout_constraintEnd_toEndOf="parent"
                    android:textColor="@color/colorTextWhite"
-                   android:backgroundTint="@color/colorPrimary"
+                   android:backgroundTint="?colorAccent"
                    android:layout_margin="@dimen/default_margin_base" />
 
                <TextView

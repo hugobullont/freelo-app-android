@@ -22,9 +22,10 @@ import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.CategoriesRepository;
 import me.sadboyz.freelo.repositories.ProfilesRepository;
 import me.sadboyz.freelo.repositories.WorksRepository;
+import me.sadboyz.freelo.ui.BaseActivity;
 import me.sadboyz.freelo.ui.Format;
 
-public class WorkActivity extends AppCompatActivity {
+public class WorkActivity extends BaseActivity {
 
     TextView nameWorkTextView;
     TextView categoryWorkTextView;

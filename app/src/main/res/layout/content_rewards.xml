@@ -19,8 +19,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center"
             android:textColor="@color/colorTextWhite"
-            android:backgroundTint="@color/colorPrimary"
-            android:background="@color/colorPrimary"/>
+            android:backgroundTint="?colorAccent"
+            android:background="?colorAccent"/>
     <Button
         android:id="@+id/insufficientCreditButton"
         android:enabled="false"
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/default_margin"
                     android:text="@string/sample_name"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="?colorPrimaryDark"
                     android:textStyle="bold"
                     android:textSize="@dimen/title_cards_content_size"
                     app:layout_constraintStart_toStartOf="parent"

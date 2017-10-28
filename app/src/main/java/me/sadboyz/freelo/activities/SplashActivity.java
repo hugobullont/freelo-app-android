@@ -18,9 +18,10 @@ import me.sadboyz.freelo.repositories.RewardsRepository;
 import me.sadboyz.freelo.repositories.TransactionsRepository;
 import me.sadboyz.freelo.repositories.UsersRepository;
 import me.sadboyz.freelo.repositories.WorksRepository;
+import me.sadboyz.freelo.ui.BaseSplashActivity;
 
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseSplashActivity {
     private static int SPLASH_TIME_OUT = 4000;
 
     @Override

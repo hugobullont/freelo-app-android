@@ -18,9 +18,10 @@ import me.sadboyz.freelo.models.Application;
 import me.sadboyz.freelo.repositories.ApplicationsRepository;
 import me.sadboyz.freelo.repositories.CategoriesRepository;
 import me.sadboyz.freelo.repositories.WorksRepository;
+import me.sadboyz.freelo.ui.BaseActivity;
 import me.sadboyz.freelo.ui.Format;
 
-public class FollowingFreelosActivity extends AppCompatActivity {
+public class FollowingFreelosActivity extends BaseActivity {
 
     TextView nameWorkTextView;
     TextView categoryWorkTextView;

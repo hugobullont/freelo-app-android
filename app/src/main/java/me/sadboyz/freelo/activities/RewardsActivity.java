@@ -32,12 +32,13 @@ import me.sadboyz.freelo.repositories.ExchangesRepository;
 import me.sadboyz.freelo.repositories.ImagesRepository;
 import me.sadboyz.freelo.repositories.ProfilesRepository;
 import me.sadboyz.freelo.repositories.RewardsRepository;
+import me.sadboyz.freelo.ui.BaseActivity;
 
 /**
  * Created by Leonel on 26/09/2017.
  */
 
-public class RewardsActivity extends AppCompatActivity {
+public class RewardsActivity extends BaseActivity {
     TextView nameTextView;
     TextView descriptionTextView;
     //TextView priceTextView;

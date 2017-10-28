@@ -15,8 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.sadboyz.freelo.R;
+import me.sadboyz.freelo.ui.BaseActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     CallbackManager callbackManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

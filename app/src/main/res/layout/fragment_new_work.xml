@@ -37,7 +37,7 @@
                         android:textSize="@dimen/title_cards_size"
                         app:layout_constraintTop_toTopOf="parent"
                         android:textStyle="bold"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="?colorPrimaryDark"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -139,7 +139,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:textColor="@color/colorTextWhite"
-                        android:backgroundTint="@color/colorPrimary"
+                        android:backgroundTint="?colorAccent"
                         android:layout_margin="@dimen/default_margin_base" />
 
 

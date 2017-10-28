@@ -38,8 +38,9 @@ import me.sadboyz.freelo.fragments.SearchFragment;
 import me.sadboyz.freelo.global.SessionVariables;
 import me.sadboyz.freelo.models.Profile;
 import me.sadboyz.freelo.repositories.ProfilesRepository;
+import me.sadboyz.freelo.ui.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private TextInputEditText idProfileTextInputEditText;
     private TextInputEditText nameProfileTextInputEditText;
