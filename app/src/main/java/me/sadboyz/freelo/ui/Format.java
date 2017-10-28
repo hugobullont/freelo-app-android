@@ -5,6 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import me.sadboyz.freelo.global.SessionVariables;
+import me.sadboyz.freelo.models.Profile;
+import me.sadboyz.freelo.repositories.ProfilesRepository;
+
 /**
  * Created by hugo on 28/10/17.
  */
@@ -22,5 +26,10 @@ public class Format {
 
         String fechacComplString = fecc.format(cal.getTime());
         return fechacComplString;
+    }
+
+    public static int setThemeFromUser(){
+        Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser);
+        return profile.getIdTheme();
     }
 }

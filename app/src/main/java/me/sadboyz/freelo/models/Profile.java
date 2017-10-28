@@ -18,6 +18,7 @@ public class Profile {
     private String bankAccount;
     private Double credit;
     private String idUser;
+    private int idTheme;
 
     public Profile() {
     }
@@ -34,6 +35,7 @@ public class Profile {
         this.setBankAccount(bankAccount);
         this.setCredit(credit);
         this.setIdUser(idUser);
+        this.setIdTheme(1);
     }
 
 
@@ -150,6 +152,7 @@ public class Profile {
         bundle.putString("bankAccount",bankAccount);
         bundle.putDouble("credit",credit);
         bundle.putString("idUser",idUser);
+        bundle.putInt("idTheme",idTheme);
         return bundle;
     }
 
@@ -160,11 +163,20 @@ public class Profile {
                 .setLastName(bundle.getString("lastName")).setEmail(bundle.getString("email"))
                 .setDescription(bundle.getString("description")).setPhoneNumber(bundle.getString("phoneNumber"))
                 .setRating(bundle.getDouble("rating")).setBank(bundle.getString("bank")).setBankAccount(bundle.getString("bankAccount"))
-                .setCredit(bundle.getDouble("credit")).setIdUser(bundle.getString("idUser"));
+                .setCredit(bundle.getDouble("credit")).setIdUser(bundle.getString("idUser")).setIdTheme(bundle.getInt("idTheme"));
         return profile;
     }
 
     public String getCompleteName(){
         return name + " " + lastName;
+    }
+
+    public int getIdTheme() {
+        return idTheme;
+    }
+
+    public Profile setIdTheme(int idTheme) {
+        this.idTheme = idTheme;
+        return this;
     }
 }

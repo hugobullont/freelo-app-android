@@ -10,6 +10,13 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        switch (Format.setThemeFromUser()){
+            case 1: setTheme(R.style.AppTheme); break;
+            case 2: setTheme(R.style.AppThemeGreen); break;
+            default: setTheme(R.style.AppTheme); break;
+        }
+
+
         //setTheme(R.style.AppThemeGreen);
     }
 }
