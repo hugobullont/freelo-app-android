@@ -19,4 +19,14 @@ public class BaseActivity extends AppCompatActivity {
 
         //setTheme(R.style.AppThemeGreen);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        switch (Format.setThemeFromUser()){
+            case 1: setTheme(R.style.AppTheme); break;
+            case 2: setTheme(R.style.AppThemeGreen); break;
+            default: setTheme(R.style.AppTheme); break;
+        }
+    }
 }

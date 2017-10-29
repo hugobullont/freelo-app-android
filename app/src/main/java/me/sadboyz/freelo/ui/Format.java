@@ -29,8 +29,8 @@ public class Format {
     }
 
     public static int setThemeFromUser(){
-        ProfilesRepository.getInstance().EventLoad();
         Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser);
+        if(profile == null) return 1;
         return profile.getIdTheme();
     }
 }

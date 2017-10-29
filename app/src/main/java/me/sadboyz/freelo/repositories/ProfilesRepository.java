@@ -61,6 +61,27 @@ public class ProfilesRepository {
         });
     }
 
+    public void InitialLoad(){
+        DataReference.getInstance().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long value = dataSnapshot.child("profiles").getChildrenCount();
+                Log.d(TAG,"no of children: "+value);
+                Iterable<DataSnapshot> iterable = dataSnapshot.child("profiles").getChildren();
+                profiles = new ArrayList<Profile>();
+                while(iterable.iterator().hasNext()){
+                    Profile profile = iterable.iterator().next().getValue(Profile.class);
+                    profiles.add(profile);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG,"Failed to read value.",databaseError.toException());
+            }
+        });
+    }
+
     public Profile GetProfileByUserId(String idUser)
     {
         if(profiles == null ) return null;

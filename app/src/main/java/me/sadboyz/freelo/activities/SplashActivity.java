@@ -19,6 +19,7 @@ import me.sadboyz.freelo.repositories.TransactionsRepository;
 import me.sadboyz.freelo.repositories.UsersRepository;
 import me.sadboyz.freelo.repositories.WorksRepository;
 import me.sadboyz.freelo.ui.BaseSplashActivity;
+import me.sadboyz.freelo.ui.Format;
 
 
 public class SplashActivity extends BaseSplashActivity {

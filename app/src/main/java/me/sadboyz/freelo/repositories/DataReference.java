@@ -15,6 +15,7 @@ public class DataReference {
         {
             mDatabase = FirebaseDatabase.getInstance().getReference();
         }
+        mDatabase.keepSynced(true);
         return mDatabase;
     }
 }
