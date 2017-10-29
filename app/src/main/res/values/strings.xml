@@ -70,4 +70,9 @@
     <string name="title_information_card">Información</string>
     <string name="credit">Crédito:</string>
 
+    <string name="title_custom_card">Temas</string>
+    <string name="theme">Tema:</string>
+
+
+    <string name="spinner_category_title">Selecciona una Categoría</string>
 </resources>

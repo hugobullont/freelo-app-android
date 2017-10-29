@@ -127,7 +127,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/pubPrieceInputLayout"
-                        tools:layout_editor_absoluteX="8dp"
                         android:layout_margin="@dimen/text_margin"
                         android:spinnerMode="dropdown" />
                     <Button

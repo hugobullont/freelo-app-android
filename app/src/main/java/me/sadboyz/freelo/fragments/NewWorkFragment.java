@@ -64,7 +64,6 @@ public class NewWorkFragment extends Fragment {
                     android.R.layout.simple_spinner_item, toStringList(categories));
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
-
         }
         catch (Exception ex){
             ex.printStackTrace();

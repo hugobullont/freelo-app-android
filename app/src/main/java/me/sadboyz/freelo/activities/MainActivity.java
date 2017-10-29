@@ -50,6 +50,7 @@ public class MainActivity extends BaseActivity {
     private TextView mTextMessage;
     private TextView mTitle;
 
+    BottomNavigationView navigation;
     boolean noConnection = false;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -68,7 +69,7 @@ public class MainActivity extends BaseActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
             setContentView(R.layout.activity_main);
-            BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+            navigation = (BottomNavigationView) findViewById(R.id.navigation);
             navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
             this.setTitleView(true, true);
 
@@ -170,6 +171,14 @@ public class MainActivity extends BaseActivity {
         super.onResume();
         this.setTitleView(true,true);
         if(noConnection) showNoConnection();
+    }
+
+    @Override
+    public void recreate() {
+        super.recreate();
+        navigation.setSelectedItemId(R.id.navigation_search);
+
+
     }
 
     private void showNoConnection()
