@@ -68,7 +68,7 @@ public class FollowingFreelosActivity extends BaseActivity {
         applyButton = (Button) findViewById(R.id.applyButton);
         applyTextView = (TextView) findViewById(R.id.applyTextView);
 
-        applyButton.setText("Cancelar");
+        applyButton.setText("Eliminar");
         nameWorkTextView.setText(work.getName());
         categoryWorkTextView.setText(CategoriesRepository.getInstance().getCategoryById(work.getIdCategory()).getName());
         descriptionWorkTextView.setText(work.getDescription());
@@ -88,10 +88,10 @@ public class FollowingFreelosActivity extends BaseActivity {
     {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
-        builder.setTitle("Dejar de seguir  Freelo");
-        builder.setMessage("Este Freelo será borrado de tu lista de Seguidos...");
+        builder.setTitle("Eliminar Freelo");
+        builder.setMessage("Eliminar este Freelo de seguidos eliminará también tu postulación. ¿Estás seguro? ");
 
-        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ApplicationsRepository.getInstance().setUnfollowApplication(application);
