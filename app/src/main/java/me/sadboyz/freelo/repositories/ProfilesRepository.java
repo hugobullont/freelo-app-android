@@ -34,7 +34,7 @@ public class ProfilesRepository {
                                                    String bank,String bankAccount)
     {
         String key = DataReference.getInstance().child("profiles").push().getKey();
-        Profile profile = new Profile(key,name,lastName,email,description,phoneNumber,0.0,bank, bankAccount,0.0, SessionVariables.CurrentidUser);
+        Profile profile = new Profile(key,name,lastName,email,description,phoneNumber,0.0,bank, bankAccount,0.0, SessionVariables.getInstance().getCurrentidUser());
         DataReference.getInstance().child("profiles").child(key).setValue(profile);
         return  this;
     }

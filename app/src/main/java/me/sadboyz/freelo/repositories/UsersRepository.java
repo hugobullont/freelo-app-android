@@ -6,6 +6,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.sadboyz.freelo.global.SessionVariables;
 import me.sadboyz.freelo.models.User;
 
@@ -17,14 +20,17 @@ import static android.content.ContentValues.TAG;
 
 public class UsersRepository {
     private static UsersRepository instance;
-    private User currentUser;
+    private static User currentUser;
+    private List<User> allUsers;
     private String idFacebook;
 
     public static UsersRepository getInstance(String idFacebook)
     {
-        if(instance != null) return instance;
+        if(instance != null && instance.getIdFacebook() != null) return instance;
         instance = new UsersRepository();
-        instance.setIdFacebook(idFacebook);
+        instance.setAllUsers(new ArrayList<User>());
+        if(idFacebook != null) instance.setIdFacebook(idFacebook);
+        currentUser = null;
         return instance;
     }
 
@@ -39,6 +45,7 @@ public class UsersRepository {
         String key = DataReference.getInstance().child("users").push().getKey();
         User user = new User(key,idFacebook);
         DataReference.getInstance().child("users").child(key).setValue(user);
+        SessionVariables.getInstance().setCurrentidUser(key);
         return this;
     }
 
@@ -50,6 +57,30 @@ public class UsersRepository {
         this.idFacebook = idFacebook;
     }
 
+    public void InitialLoad() {
+        DataReference.getInstance().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long value = dataSnapshot.child("users").getChildrenCount();
+                Log.d(TAG,"no of children: "+value);
+
+                Iterable<DataSnapshot> iterable = dataSnapshot.child("users").getChildren();
+                while(iterable.iterator().hasNext()){
+                    allUsers = new ArrayList<>();
+                    User user = iterable.iterator().next().getValue(User.class);
+                    allUsers.add(user);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG,"Failed to read value.",databaseError.toException());
+            }
+        });
+    }
+
+
     public void EventLoad()
     {
         DataReference.getInstance().addValueEventListener(new ValueEventListener() {
@@ -60,8 +91,11 @@ public class UsersRepository {
 
                 Iterable<DataSnapshot> iterable = dataSnapshot.child("users").getChildren();
                 while(iterable.iterator().hasNext()){
+                    allUsers = new ArrayList<>();
                     User user = iterable.iterator().next().getValue(User.class);
-                    if(user.getIdFacebook().equals(idFacebook)) setCurrentUser(user);
+                    allUsers.add(user);
+                    if(user.getIdFacebook().equals(getIdFacebook())) setCurrentUser(user);
+
                 }
             }
 
@@ -76,14 +110,29 @@ public class UsersRepository {
         return currentUser;
     }
 
+    public User getUserByFacebookId(){
+        for(User u: allUsers){
+            if(u.getIdFacebook().equals(getIdFacebook())) return u;
+        }
+        return null;
+    }
+
     public UsersRepository setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
-        SessionVariables.CurrentidUser =  currentUser.getIdUser();
+        SessionVariables.getInstance().setCurrentidUser(currentUser.getIdUser());
         return this;
     }
 
     public String profileImageUrl(){
         String url = "https://graph.facebook.com/" + getIdFacebook() + "/picture?type=large";
         return url;
+    }
+
+    public List<User> getAllUsers() {
+        return allUsers;
+    }
+
+    public void setAllUsers(List<User> allUsers) {
+        this.allUsers = allUsers;
     }
 }

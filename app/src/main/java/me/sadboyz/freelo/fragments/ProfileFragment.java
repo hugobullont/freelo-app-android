@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser);
+        profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.getInstance().getCurrentidUser());
         profileImage = (CircleImageView) view.findViewById(R.id.profileImage);
         fullNameTextView = (TextView) view.findViewById(R.id.fullNameTextView);
         creditTextView = (TextView) view.findViewById(R.id.creditTextView);
@@ -69,7 +69,7 @@ public class ProfileFragment extends Fragment {
 
         fullNameTextView.setText(profile.getCompleteName());
 
-        Glide.with(getContext()).load(UsersRepository.getInstance(SessionVariables.FacebookId).profileImageUrl()).dontAnimate().into(profileImage);
+        Glide.with(getContext()).load(UsersRepository.getInstance(SessionVariables.getInstance().getFacebookId()).profileImageUrl()).dontAnimate().into(profileImage);
         creditTextView.setText("S/ " + String.format("%.2f",profile.getCredit()));
         return view;
     }

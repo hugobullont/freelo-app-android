@@ -84,7 +84,7 @@ public class RewardsActivity extends BaseActivity {
             TextView cv = new TextView(getApplicationContext());
             cv.setGravity(Gravity.END);
             cv.setLayoutParams(lp);
-            Double cred = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).getCredit();
+            Double cred = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.getInstance().getCurrentidUser()).getCredit();
             cv.setText("S/ " + String.format("%.2f",cred));
             //cv.setText("S/ " + ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).toString());
             cv.setTextSize(20);
@@ -148,7 +148,7 @@ public class RewardsActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ExchangesRepository.getInstance().AddExchangeToDatabase(
-                        ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).getIdUser()
+                        ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.getInstance().getCurrentidUser()).getIdUser()
                         ,reward.getIdReward());
                 loadInfoRewards(reward);
                 setTitleView(true,true);

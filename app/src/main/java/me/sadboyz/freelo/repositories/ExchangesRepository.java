@@ -41,13 +41,13 @@ public class ExchangesRepository {
 
         if(!ValidatePost(reward)) return false;
         Exchange exchange = new Exchange(key,idUser,idReward,date,false);
-        TransactionsRepository.getInstance().AddTransactionToDatabase(SessionVariables.CurrentidUser,reward.getPrice(),"exchange",key);
+        TransactionsRepository.getInstance().AddTransactionToDatabase(SessionVariables.getInstance().getCurrentidUser(),reward.getPrice(),"exchange",key);
         DataReference.getInstance().child("exchanges").child(key).setValue(exchange);
         return true;
     }
 
     private boolean ValidatePost(Reward reward){
-        Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser);
+        Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.getInstance().getCurrentidUser());
 
         if(profile.getCredit() - reward.getPrice() < 0){
             return false;
@@ -60,7 +60,7 @@ public class ExchangesRepository {
     }
 
     public boolean ValidateCredit(Reward reward){
-        if(ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser).getCredit()
+        if(ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.getInstance().getCurrentidUser()).getCredit()
                 - reward.getPrice() < 0){
             return false;
         }
@@ -79,7 +79,7 @@ public class ExchangesRepository {
                 exchanges = new ArrayList<Exchange>();
                 while(iterable.iterator().hasNext()){
                     Exchange exchange = iterable.iterator().next().getValue(Exchange.class);
-                    if(exchange.getIdUser().equals(SessionVariables.CurrentidUser))
+                    if(exchange.getIdUser().equals(SessionVariables.getInstance().getCurrentidUser()))
                         exchanges.add(exchange);
                 }
             }

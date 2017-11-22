@@ -44,14 +44,14 @@ public class WorksRepository {
         String key = DataReference.getInstance().child("works").push().getKey();
         String date = Calendar.getInstance().getTime().toString();
         if(!ValidatePost(basePrice)) return false;
-        Work work = new Work(key,name,description,basePrice,pubPrice,date,SessionVariables.CurrentidUser,"null",idCategory,"open");
-        TransactionsRepository.getInstance().AddTransactionToDatabase(SessionVariables.CurrentidUser,basePrice,"newWork",key);
+        Work work = new Work(key,name,description,basePrice,pubPrice,date,SessionVariables.getInstance().getCurrentidUser(),"null",idCategory,"open");
+        TransactionsRepository.getInstance().AddTransactionToDatabase(SessionVariables.getInstance().getCurrentidUser(),basePrice,"newWork",key);
         DataReference.getInstance().child("works").child(key).setValue(work);
         return true;
     }
 
     private boolean ValidatePost(Double basePrice){
-        Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser);
+        Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.getInstance().getCurrentidUser());
 
         if(profile.getCredit() - basePrice < 0){
             return false;
@@ -75,10 +75,10 @@ public class WorksRepository {
                 publishedWorks = new ArrayList<Work>();
                 while(iterable.iterator().hasNext()){
                     Work work = iterable.iterator().next().getValue(Work.class);
-                    if(work.getStatus().equals("open") && !work.getCreatedBy().equals(SessionVariables.CurrentidUser)) {
+                    if(work.getStatus().equals("open") && !work.getCreatedBy().equals(SessionVariables.getInstance().getCurrentidUser())) {
                         works.add(work);
                     }
-                    if(work.getCreatedBy().equals(SessionVariables.CurrentidUser)){
+                    if(work.getCreatedBy().equals(SessionVariables.getInstance().getCurrentidUser())){
                         publishedWorks.add(work);
                     }
                 }

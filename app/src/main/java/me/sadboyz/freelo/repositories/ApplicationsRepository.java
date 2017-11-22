@@ -51,7 +51,7 @@ public class ApplicationsRepository {
                 applications = new ArrayList<Application>();
                 while(iterable.iterator().hasNext()){
                     Application application = iterable.iterator().next().getValue(Application.class);
-                    if(application.getIdUser().equals(SessionVariables.CurrentidUser))
+                    if(application.getIdUser().equals(SessionVariables.getInstance().getCurrentidUser()))
                         applications.add(application);
                 }
             }

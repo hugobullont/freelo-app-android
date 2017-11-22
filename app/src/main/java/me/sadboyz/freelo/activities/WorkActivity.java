@@ -106,7 +106,7 @@ public class WorkActivity extends BaseActivity {
         builder.setPositiveButton("Aplicar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ApplicationsRepository.getInstance().AddApplicationToDatabase(SessionVariables.CurrentidUser,work.getIdWork());
+                ApplicationsRepository.getInstance().AddApplicationToDatabase(SessionVariables.getInstance().getCurrentidUser(),work.getIdWork());
                 apply = true;
                 loadInfoWork(work);
             }

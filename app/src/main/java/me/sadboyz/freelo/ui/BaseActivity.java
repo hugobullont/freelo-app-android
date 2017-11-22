@@ -3,6 +3,9 @@ package me.sadboyz.freelo.ui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.facebook.login.LoginManager;
+import com.google.firebase.auth.FirebaseAuth;
+
 import me.sadboyz.freelo.R;
 
 public class BaseActivity extends AppCompatActivity {
@@ -20,6 +23,13 @@ public class BaseActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         theme();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
     }
 
     private void theme(){

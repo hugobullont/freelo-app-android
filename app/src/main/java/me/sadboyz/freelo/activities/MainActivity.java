@@ -101,7 +101,7 @@ public class MainActivity extends BaseActivity {
 
             ly.addView(tv);
 
-            Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.CurrentidUser);
+            Profile profile = ProfilesRepository.getInstance().GetProfileByUserId(SessionVariables.getInstance().getCurrentidUser());
             if(profile == null){
                 noConnection = true;
             }
