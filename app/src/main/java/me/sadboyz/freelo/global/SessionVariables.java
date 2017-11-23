@@ -7,8 +7,8 @@ import com.google.firebase.auth.FirebaseUser;
  */
 
 public class SessionVariables {
-    private  String CurrentidUser;
-    private String FacebookId;
+    private  String CurrentidUser = "testUser";
+    private String FacebookId = "4";
     private FirebaseUser CurrentFirebaseUser;
     private static SessionVariables instance;
 

@@ -34,7 +34,7 @@ public class SplashActivity extends BaseSplashActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent homeIntent = new Intent(SplashActivity.this,LoginActivity.class);
+                    Intent homeIntent = new Intent(SplashActivity.this,MainActivity.class);
                     startActivity(homeIntent);
                     finish();
                 }
@@ -43,6 +43,7 @@ public class SplashActivity extends BaseSplashActivity {
 
     private void LoadData()
     {
+
             RewardsRepository.getInstance().EventLoad();
             WorksRepository.getInstance().EventLoad();
             CategoriesRepository.getInstance().EventLoad();
@@ -50,7 +51,6 @@ public class SplashActivity extends BaseSplashActivity {
             ExchangesRepository.getInstance().EventLoad();
             TransactionsRepository.getInstance().EventLoad();
             ProfilesRepository.getInstance().EventLoad();
-            UsersRepository.getInstance(null).EventLoad();
 
     }
 }
